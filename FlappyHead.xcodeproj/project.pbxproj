@@ -3,18 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BE876F7A2900788D0513810 /* Pods_FlappyHead_FlappyHeadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCFDF121B0F2AC70608F2216 /* Pods_FlappyHead_FlappyHeadUITests.framework */; };
+		849F5EFCE93A8ABE7C87D978 /* Pods_FlappyHeadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0D0E9CB387BB4EE2576143 /* Pods_FlappyHeadTests.framework */; };
+		A10803631A65657FCDCAB532 /* Pods_FlappyHead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECE90EC97D10F7644FFF8A8 /* Pods_FlappyHead.framework */; };
 		AD5351A926D2DBAC002CB457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351A826D2DBAC002CB457 /* AppDelegate.swift */; };
 		AD5351AB26D2DBAC002CB457 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351AA26D2DBAC002CB457 /* SceneDelegate.swift */; };
-		AD5351AD26D2DBAC002CB457 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351AC26D2DBAC002CB457 /* ViewController.swift */; };
-		AD5351B026D2DBAC002CB457 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5351AE26D2DBAC002CB457 /* Main.storyboard */; };
-		AD5351B226D2DBAD002CB457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5351B126D2DBAD002CB457 /* Assets.xcassets */; };
 		AD5351B526D2DBAD002CB457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5351B326D2DBAD002CB457 /* LaunchScreen.storyboard */; };
 		AD5351C026D2DBAD002CB457 /* FlappyHeadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351BF26D2DBAD002CB457 /* FlappyHeadTests.swift */; };
 		AD5351CB26D2DBAD002CB457 /* FlappyHeadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351CA26D2DBAD002CB457 /* FlappyHeadUITests.swift */; };
+		AD5351EE26D2DBDB002CB457 /* SKNode+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351D926D2DBDA002CB457 /* SKNode+Extension.swift */; };
+		AD5351F126D2DBDB002CB457 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5351DE26D2DBDA002CB457 /* Main.storyboard */; };
+		AD5351F226D2DBDB002CB457 /* GameSettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351E126D2DBDA002CB457 /* GameSettingManager.swift */; };
+		AD5351F326D2DBDB002CB457 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AD5351E326D2DBDA002CB457 /* GameScene.sks */; };
+		AD5351F426D2DBDB002CB457 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351E426D2DBDA002CB457 /* GameScene.swift */; };
+		AD5351F626D2DBDB002CB457 /* bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = AD5351E726D2DBDB002CB457 /* bird.atlas */; };
+		AD5351F726D2DBDB002CB457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD5351E826D2DBDB002CB457 /* Assets.xcassets */; };
+		AD5351F826D2DBDB002CB457 /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351EA26D2DBDB002CB457 /* MainGameViewController.swift */; };
+		AD53520626D2DD3B002CB457 /* ScalingCarousel in Frameworks */ = {isa = PBXBuildFile; productRef = AD53520526D2DD3B002CB457 /* ScalingCarousel */; };
+		AD53521326D2E3CF002CB457 /* FaceTriggerEvaluators.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD53521126D2E3CF002CB457 /* FaceTriggerEvaluators.swift */; };
+		AD53521426D2E3CF002CB457 /* FaceTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD53521226D2E3CF002CB457 /* FaceTrigger.swift */; };
+		ADA95FEB26D4730C000AF0CD /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA95FEA26D4730C000AF0CD /* GameManager.swift */; };
+		ADDE17D52766EDF500E146A3 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = ADDE17B92766EDF500E146A3 /* FireParticles.sks */; };
+		ADDE17E02766EDF500E146A3 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDE17C42766EDF500E146A3 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +49,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A459B9328833F0470456C37 /* Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig"; path = "Target Support Files/Pods-FlappyHead-FlappyHeadUITests/Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7ECE90EC97D10F7644FFF8A8 /* Pods_FlappyHead.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlappyHead.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9146A6C9B9E73C612788063 /* Pods-FlappyHead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead.release.xcconfig"; path = "Target Support Files/Pods-FlappyHead/Pods-FlappyHead.release.xcconfig"; sourceTree = "<group>"; };
+		A94A1877C3E229DD07789CE6 /* Pods-FlappyHead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead.debug.xcconfig"; path = "Target Support Files/Pods-FlappyHead/Pods-FlappyHead.debug.xcconfig"; sourceTree = "<group>"; };
 		AD5351A526D2DBAC002CB457 /* FlappyHead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyHead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5351A826D2DBAC002CB457 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD5351AA26D2DBAC002CB457 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AD5351AC26D2DBAC002CB457 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AD5351AF26D2DBAC002CB457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AD5351B126D2DBAD002CB457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD5351B426D2DBAD002CB457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD5351B626D2DBAD002CB457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD5351BB26D2DBAD002CB457 /* FlappyHeadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyHeadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +64,24 @@
 		AD5351C626D2DBAD002CB457 /* FlappyHeadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyHeadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5351CA26D2DBAD002CB457 /* FlappyHeadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyHeadUITests.swift; sourceTree = "<group>"; };
 		AD5351CC26D2DBAD002CB457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD5351D926D2DBDA002CB457 /* SKNode+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extension.swift"; sourceTree = "<group>"; };
+		AD5351DF26D2DBDA002CB457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD5351E126D2DBDA002CB457 /* GameSettingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettingManager.swift; sourceTree = "<group>"; };
+		AD5351E326D2DBDA002CB457 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		AD5351E426D2DBDA002CB457 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		AD5351E726D2DBDB002CB457 /* bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bird.atlas; sourceTree = "<group>"; };
+		AD5351E826D2DBDB002CB457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD5351EA26D2DBDB002CB457 /* MainGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
+		AD53521126D2E3CF002CB457 /* FaceTriggerEvaluators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceTriggerEvaluators.swift; sourceTree = "<group>"; };
+		AD53521226D2E3CF002CB457 /* FaceTrigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceTrigger.swift; sourceTree = "<group>"; };
+		ADA95FEA26D4730C000AF0CD /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		ADDE17B92766EDF500E146A3 /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
+		ADDE17C42766EDF500E146A3 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		B1780FD8FD0EB1802B2931F6 /* Pods-FlappyHeadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHeadTests.debug.xcconfig"; path = "Target Support Files/Pods-FlappyHeadTests/Pods-FlappyHeadTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DC30EFD42E69D5543F3E00F1 /* Pods-FlappyHeadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHeadTests.release.xcconfig"; path = "Target Support Files/Pods-FlappyHeadTests/Pods-FlappyHeadTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9CC4EC440F883BF0EE06478 /* Pods-FlappyHead-FlappyHeadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead-FlappyHeadUITests.release.xcconfig"; path = "Target Support Files/Pods-FlappyHead-FlappyHeadUITests/Pods-FlappyHead-FlappyHeadUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EB0D0E9CB387BB4EE2576143 /* Pods_FlappyHeadTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlappyHeadTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCFDF121B0F2AC70608F2216 /* Pods_FlappyHead_FlappyHeadUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlappyHead_FlappyHeadUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD53520626D2DD3B002CB457 /* ScalingCarousel in Frameworks */,
+				A10803631A65657FCDCAB532 /* Pods_FlappyHead.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849F5EFCE93A8ABE7C87D978 /* Pods_FlappyHeadTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +106,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE876F7A2900788D0513810 /* Pods_FlappyHead_FlappyHeadUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A8EEE6C965CDF91859F2C930 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7ECE90EC97D10F7644FFF8A8 /* Pods_FlappyHead.framework */,
+				FCFDF121B0F2AC70608F2216 /* Pods_FlappyHead_FlappyHeadUITests.framework */,
+				EB0D0E9CB387BB4EE2576143 /* Pods_FlappyHeadTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AD53519C26D2DBAC002CB457 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +130,8 @@
 				AD5351BE26D2DBAD002CB457 /* FlappyHeadTests */,
 				AD5351C926D2DBAD002CB457 /* FlappyHeadUITests */,
 				AD5351A626D2DBAC002CB457 /* Products */,
+				D552C1E41BD356B251645CE6 /* Pods */,
+				A8EEE6C965CDF91859F2C930 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +148,17 @@
 		AD5351A726D2DBAC002CB457 /* FlappyHead */ = {
 			isa = PBXGroup;
 			children = (
+				ADA95FED26D47BA5000AF0CD /* Utils */,
 				AD5351A826D2DBAC002CB457 /* AppDelegate.swift */,
 				AD5351AA26D2DBAC002CB457 /* SceneDelegate.swift */,
-				AD5351AC26D2DBAC002CB457 /* ViewController.swift */,
-				AD5351AE26D2DBAC002CB457 /* Main.storyboard */,
-				AD5351B126D2DBAD002CB457 /* Assets.xcassets */,
-				AD5351B326D2DBAD002CB457 /* LaunchScreen.storyboard */,
+				AD5351E026D2DBDA002CB457 /* Managers */,
+				AD5351E926D2DBDB002CB457 /* ViewControllers */,
+				AD5351DA26D2DBDA002CB457 /* Views */,
+				AD5351D826D2DBDA002CB457 /* Extensions */,
+				AD53520C26D2DE5A002CB457 /* GameSupportFiles */,
 				AD5351B626D2DBAD002CB457 /* Info.plist */,
+				ADDE17B72766EDF500E146A3 /* Content */,
+				AD5351B326D2DBAD002CB457 /* LaunchScreen.storyboard */,
 			);
 			path = FlappyHead;
 			sourceTree = "<group>";
@@ -128,6 +181,106 @@
 			path = FlappyHeadUITests;
 			sourceTree = "<group>";
 		};
+		AD5351D826D2DBDA002CB457 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AD5351D926D2DBDA002CB457 /* SKNode+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AD5351DA26D2DBDA002CB457 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AD5351DE26D2DBDA002CB457 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AD5351E026D2DBDA002CB457 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AD5351E126D2DBDA002CB457 /* GameSettingManager.swift */,
+				ADA95FEA26D4730C000AF0CD /* GameManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		AD5351E226D2DBDA002CB457 /* GameScenes */ = {
+			isa = PBXGroup;
+			children = (
+				AD5351E326D2DBDA002CB457 /* GameScene.sks */,
+				AD5351E426D2DBDA002CB457 /* GameScene.swift */,
+			);
+			path = GameScenes;
+			sourceTree = "<group>";
+		};
+		AD5351E626D2DBDB002CB457 /* Additional Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AD5351E726D2DBDB002CB457 /* bird.atlas */,
+				AD5351E826D2DBDB002CB457 /* Assets.xcassets */,
+			);
+			path = "Additional Assets";
+			sourceTree = "<group>";
+		};
+		AD5351E926D2DBDB002CB457 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AD5351EA26D2DBDB002CB457 /* MainGameViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AD53520726D2DDCD002CB457 /* FaceMapping */ = {
+			isa = PBXGroup;
+			children = (
+				AD53521226D2E3CF002CB457 /* FaceTrigger.swift */,
+				AD53521126D2E3CF002CB457 /* FaceTriggerEvaluators.swift */,
+			);
+			path = FaceMapping;
+			sourceTree = "<group>";
+		};
+		AD53520C26D2DE5A002CB457 /* GameSupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				AD5351E626D2DBDB002CB457 /* Additional Assets */,
+				AD53520726D2DDCD002CB457 /* FaceMapping */,
+				AD5351E226D2DBDA002CB457 /* GameScenes */,
+			);
+			path = GameSupportFiles;
+			sourceTree = "<group>";
+		};
+		ADA95FED26D47BA5000AF0CD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		ADDE17B72766EDF500E146A3 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE17B92766EDF500E146A3 /* FireParticles.sks */,
+				ADDE17C42766EDF500E146A3 /* spark.png */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		D552C1E41BD356B251645CE6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A94A1877C3E229DD07789CE6 /* Pods-FlappyHead.debug.xcconfig */,
+				A9146A6C9B9E73C612788063 /* Pods-FlappyHead.release.xcconfig */,
+				7A459B9328833F0470456C37 /* Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig */,
+				E9CC4EC440F883BF0EE06478 /* Pods-FlappyHead-FlappyHeadUITests.release.xcconfig */,
+				B1780FD8FD0EB1802B2931F6 /* Pods-FlappyHeadTests.debug.xcconfig */,
+				DC30EFD42E69D5543F3E00F1 /* Pods-FlappyHeadTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,15 +288,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD5351CF26D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHead" */;
 			buildPhases = (
+				75DF38336ED468F89DF41D0C /* [CP] Check Pods Manifest.lock */,
 				AD5351A126D2DBAC002CB457 /* Sources */,
 				AD5351A226D2DBAC002CB457 /* Frameworks */,
 				AD5351A326D2DBAC002CB457 /* Resources */,
+				0FBE2AF2BB01CBE57936192A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = FlappyHead;
+			packageProductDependencies = (
+				AD53520526D2DD3B002CB457 /* ScalingCarousel */,
+			);
 			productName = FlappyHead;
 			productReference = AD5351A526D2DBAC002CB457 /* FlappyHead.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +310,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD5351D226D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHeadTests" */;
 			buildPhases = (
+				48B2034260FCC73755BE5622 /* [CP] Check Pods Manifest.lock */,
 				AD5351B726D2DBAD002CB457 /* Sources */,
 				AD5351B826D2DBAD002CB457 /* Frameworks */,
 				AD5351B926D2DBAD002CB457 /* Resources */,
@@ -170,9 +329,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD5351D526D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHeadUITests" */;
 			buildPhases = (
+				8E2D22391EF4355D2BFD81FA /* [CP] Check Pods Manifest.lock */,
 				AD5351C226D2DBAD002CB457 /* Sources */,
 				AD5351C326D2DBAD002CB457 /* Frameworks */,
 				AD5351C426D2DBAD002CB457 /* Resources */,
+				26A324CD6604AEFFD6073BB9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +376,9 @@
 				Base,
 			);
 			mainGroup = AD53519C26D2DBAC002CB457;
+			packageReferences = (
+				AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel.git" */,
+			);
 			productRefGroup = AD5351A626D2DBAC002CB457 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,9 +395,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5351F126D2DBDB002CB457 /* Main.storyboard in Resources */,
+				ADDE17E02766EDF500E146A3 /* spark.png in Resources */,
 				AD5351B526D2DBAD002CB457 /* LaunchScreen.storyboard in Resources */,
-				AD5351B226D2DBAD002CB457 /* Assets.xcassets in Resources */,
-				AD5351B026D2DBAC002CB457 /* Main.storyboard in Resources */,
+				AD5351F326D2DBDB002CB457 /* GameScene.sks in Resources */,
+				AD5351F626D2DBDB002CB457 /* bird.atlas in Resources */,
+				AD5351F726D2DBDB002CB457 /* Assets.xcassets in Resources */,
+				ADDE17D52766EDF500E146A3 /* FireParticles.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +421,123 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FBE2AF2BB01CBE57936192A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlappyHead/Pods-FlappyHead-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlappyHead/Pods-FlappyHead-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlappyHead/Pods-FlappyHead-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		26A324CD6604AEFFD6073BB9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlappyHead-FlappyHeadUITests/Pods-FlappyHead-FlappyHeadUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlappyHead-FlappyHeadUITests/Pods-FlappyHead-FlappyHeadUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlappyHead-FlappyHeadUITests/Pods-FlappyHead-FlappyHeadUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48B2034260FCC73755BE5622 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlappyHeadTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75DF38336ED468F89DF41D0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlappyHead-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E2D22391EF4355D2BFD81FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlappyHead-FlappyHeadUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AD5351A126D2DBAC002CB457 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD5351AD26D2DBAC002CB457 /* ViewController.swift in Sources */,
+				AD5351EE26D2DBDB002CB457 /* SKNode+Extension.swift in Sources */,
+				ADA95FEB26D4730C000AF0CD /* GameManager.swift in Sources */,
+				AD53521426D2E3CF002CB457 /* FaceTrigger.swift in Sources */,
+				AD53521326D2E3CF002CB457 /* FaceTriggerEvaluators.swift in Sources */,
+				AD5351F826D2DBDB002CB457 /* MainGameViewController.swift in Sources */,
+				AD5351F226D2DBDB002CB457 /* GameSettingManager.swift in Sources */,
 				AD5351A926D2DBAC002CB457 /* AppDelegate.swift in Sources */,
 				AD5351AB26D2DBAC002CB457 /* SceneDelegate.swift in Sources */,
+				AD5351F426D2DBDB002CB457 /* GameScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,20 +573,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AD5351AE26D2DBAC002CB457 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AD5351AF26D2DBAC002CB457 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AD5351B326D2DBAD002CB457 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AD5351B426D2DBAD002CB457 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AD5351DE26D2DBDA002CB457 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD5351DF26D2DBDA002CB457 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -433,11 +710,16 @@
 		};
 		AD5351D026D2DBAD002CB457 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A94A1877C3E229DD07789CE6 /* Pods-FlappyHead.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3QF4959CZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FlappyHead/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,11 +734,16 @@
 		};
 		AD5351D126D2DBAD002CB457 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9146A6C9B9E73C612788063 /* Pods-FlappyHead.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3QF4959CZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FlappyHead/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -471,6 +758,7 @@
 		};
 		AD5351D326D2DBAD002CB457 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1780FD8FD0EB1802B2931F6 /* Pods-FlappyHeadTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +781,7 @@
 		};
 		AD5351D426D2DBAD002CB457 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC30EFD42E69D5543F3E00F1 /* Pods-FlappyHeadTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +804,7 @@
 		};
 		AD5351D626D2DBAD002CB457 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A459B9328833F0470456C37 /* Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +825,7 @@
 		};
 		AD5351D726D2DBAD002CB457 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9CC4EC440F883BF0EE06478 /* Pods-FlappyHead-FlappyHeadUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -593,6 +884,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/superpeteblaze/ScalingCarousel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD53520526D2DD3B002CB457 /* ScalingCarousel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel.git" */;
+			productName = ScalingCarousel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD53519D26D2DBAC002CB457 /* Project object */;
 }

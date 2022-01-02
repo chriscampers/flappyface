@@ -1,0 +1,6 @@
+framework module Pods_FlappyHead_FlappyHeadUITests {
+  umbrella header "Pods-FlappyHead-FlappyHeadUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
