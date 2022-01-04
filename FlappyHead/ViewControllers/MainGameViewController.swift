@@ -9,19 +9,25 @@
 import UIKit
 import SpriteKit
 import GoogleMobileAds
+import ReplayKit
+import ISHPermissionKit
 
 class MainGameViewController: UIViewController {
 
     @IBOutlet var previewContainer: UIView!
     @IBOutlet weak var actionLabel: UILabel!
     @IBOutlet var logTextView: UIView!
+    var overlayView: UIView!
+    var promptViewController: ModalPromptViewController!
+    var gameScene: GameScene!
+    var shareImageInstagram = ShareImageInstagram.shared
 
     let gameSettingsManager = GameSettingManager.shared
     var gamePlayManager: GamePlayManagerProtocol = GameManager.shared
-    
+    var gameManagerMechanics: GameManagerMechanicsProtocol = GameManager.shared
     var faceTrigger: FaceTrigger?
     var bird: BirdMovingDelegate?
-    
+
     var bannerView: GADBannerView!
     var rewardedAd: GADRewardedAd!
     
@@ -29,18 +35,25 @@ class MainGameViewController: UIViewController {
         super.viewDidLoad()
         
         gamePlayManager.delegate = self
+        shareImageInstagram.delegate = self
         actionLabel.text = " " + gamePlayManager.currentFacialActionName() + " "
         loadOrReloadLevel()
         setupNotifications()
         
         // In this case, we instantiate the banner with desired ad size.
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         addBannerViewToView(bannerView)
         
         bannerView.delegate = self
+        
+        loadRewardAd()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(startRecording))
+    
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,7 +65,7 @@ class MainGameViewController: UIViewController {
     
     func loadRewardAd() {
         let adRequest = GADRequest()
-        GADRewardedAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4806952744", request: adRequest, completionHandler:  { (ad, error) in
+        GADRewardedAd.load(withAdUnitID: "ca-app-pub-8448074232552599/6210888855", request: adRequest, completionHandler:  { (ad, error) in
             if let err = error {
                 print(err.localizedDescription)
             } else {
@@ -73,6 +86,34 @@ class MainGameViewController: UIViewController {
         }
     }
     
+    func addPromptView() {
+        // setup overlay
+        overlayView = addOverlayView()
+        
+        // setup prompt
+        promptViewController = ModalPromptViewController(photo: "test")
+        promptViewController.delegate = self
+        
+        view.addSubview(promptViewController.view)
+        promptViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints(
+            [NSLayoutConstraint(item: promptViewController.view as Any,
+                              attribute: .centerY,
+                              relatedBy: .equal,
+                                toItem: view,
+                              attribute: .centerY,
+                              multiplier: 1,
+                              constant: 0),
+             NSLayoutConstraint(item: promptViewController.view as Any,
+                              attribute: .centerX,
+                              relatedBy: .equal,
+                              toItem: view,
+                              attribute: .centerX,
+                              multiplier: 1,
+                              constant: 0)
+          ])
+    }
+    
     func addBannerViewToView(_ bannerView: GADBannerView) {
       bannerView.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(bannerView)
@@ -80,8 +121,8 @@ class MainGameViewController: UIViewController {
         [NSLayoutConstraint(item: bannerView,
                             attribute: .bottom,
                             relatedBy: .equal,
-                            toItem: bottomLayoutGuide,
-                            attribute: .top,
+                            toItem: previewContainer,
+                            attribute: .bottom,
                             multiplier: 1,
                             constant: 0),
          NSLayoutConstraint(item: bannerView,
@@ -108,22 +149,21 @@ class MainGameViewController: UIViewController {
     }
     
     private func loadOrReloadLevel() {
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
-            // Configure the view.
-            let skView = self.logTextView as! SKView
-            skView.showsFPS = false
-            skView.showsNodeCount = false
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .aspectFill
-            
-            skView.presentScene(scene)
-            
-            bird = scene
-        }
+        gameScene = GameScene.unarchiveFromFile("GameScene") as! GameScene
+        // Configure the view.
+        let skView = self.logTextView as! SKView
+        skView.showsFPS = false
+        skView.showsNodeCount = false
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        gameScene.scaleMode = .aspectFill
+        
+        skView.presentScene(gameScene)
+        
+        bird = gameScene
     }
 }
 
@@ -131,32 +171,32 @@ extension MainGameViewController: FaceTriggerDelegate {
     // MARK: Smile
     func onSmileDidChange(smiling: Bool) {}
     func onSmile() {
-        if gamePlayManager.isFacialActionValid(action: .smile) {
-            bird?.moveBird()
+        if gameManagerMechanics.isFacialActionValid(action: .smile) {
+            callMoveBird()
         }
     }
     
     // MARK: Left blink
     func onBlinkLeftDidChange(blinkingLeft: Bool) {}
     func onBlinkLeft() {
-        if gamePlayManager.isFacialActionValid(action: .leftWink) {
-            bird?.moveBird()
+        if gameManagerMechanics.isFacialActionValid(action: .leftWink) {
+            callMoveBird()
         }
     }
     
     // MARK: Right blink
     func onBlinkRightDidChange(blinkingRight: Bool) {}
     func onBlinkRight() {
-        if gamePlayManager.isFacialActionValid(action: .rightWink) {
-            bird?.moveBird()
+        if gameManagerMechanics.isFacialActionValid(action: .rightWink) {
+            callMoveBird()
         }
     }
     
     // MARK: Full Blink
     func onBlinkDidChange(blinking: Bool) {}
     func onBlink() {
-        if gamePlayManager.isFacialActionValid(action: .blink) {
-            bird?.moveBird()
+        if gameManagerMechanics.isFacialActionValid(action: .blink) {
+            callMoveBird()
         }
     }
     
@@ -170,16 +210,16 @@ extension MainGameViewController: FaceTriggerDelegate {
     // MARK: Cheek Puffing
     func onCheekPuffDidChange(cheekPuffing: Bool) {}
     func onCheekPuff() {
-        if gamePlayManager.isFacialActionValid(action: .puffyFace) {
-            bird?.moveBird()
+        if gameManagerMechanics.isFacialActionValid(action: .puffyFace) {
+            callMoveBird()
         }
     }
     
     // MARK: Kissy Lips
     func onMouthPuckerDidChange(mouthPuckering: Bool) {}
     func onMouthPucker() {
-        if gamePlayManager.isFacialActionValid(action: .kissyFace) {
-            bird?.moveBird()
+        if gameManagerMechanics.isFacialActionValid(action: .kissyFace) {
+            callMoveBird()
         }
     }
     
@@ -196,11 +236,26 @@ extension MainGameViewController: FaceTriggerDelegate {
     // MARK: Squint
     func onSquintDidChange(squinting: Bool) {}
     func onSquint() {}
+    
+    private func callMoveBird() {
+        if gamePlayManager.gameState.status != .inProgress {
+            startRecording()
+        }
+        bird?.moveBird()
+    }
 }
 
-extension MainGameViewController: GamePlayManagerDelegate {
+extension MainGameViewController: GameManagerDelegate {
     func displayFullScreenAd() {
-        showRewardAd()
+//        showRewardAd()
+    }
+    
+    func displayExtraLifePromptIfNeeded() {
+        if Bool.random() {
+            addPromptView()
+        } else {
+            gameScene.registerEndOfGame()
+        }
     }
     
     func currentActionChanged(newActionName: String) {
@@ -252,6 +307,7 @@ extension MainGameViewController: GADFullScreenContentDelegate {
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error)")
+        print(error.localizedDescription)
     }
     
     func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
@@ -262,4 +318,91 @@ extension MainGameViewController: GADFullScreenContentDelegate {
     func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("adDidPresentFullScreenContent")
     }
+}
+
+extension MainGameViewController: ISHPermissionsViewControllerDataSource {
+    func permissionsViewController(_ vc: ISHPermissionsViewController, requestViewControllerFor category: ISHPermissionCategory) -> ISHPermissionRequestViewController {
+        return ISHPermissionRequestViewController()
+    }
+
+
+}
+
+extension MainGameViewController: ModalPromptDelegate {
+    private func promptPermissions() {
+        let permissions = [ISHPermissionCategory.photoCamera.rawValue as! NSNumber]
+        let permissionVc = ISHPermissionsViewController(categories: permissions, dataSource: self)!
+        present(permissionVc, animated: true, completion: { return })
+    }
+    
+    func reasonForDimissing(reason: ModalPromptViewController.ReasonForClosing) {
+        removeOverlayAndPromptFromView()
+        promptPermissions()
+        
+        if reason == .watched {
+            showRewardAd()
+        }
+        
+        if reason == .cancel {
+            stopRecording()
+            gameScene.registerEndOfGame()
+            shareImageInstagram.postToStories(image: captureScreen(), backgroundTopColorHex: "", backgroundBottomColorHex: "", deepLink: "")
+        }
+    }
+    
+    func captureScreen() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, true, 0)
+
+        self.view.drawHierarchy(in: self.view.bounds, afterScreenUpdates: true)
+
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+    private func removeOverlayAndPromptFromView() {
+        promptViewController.view.removeFromSuperview()
+        overlayView.removeFromSuperview()
+    }
+    
+}
+
+extension MainGameViewController: ShareStoriesDelegate {
+    func error(message: String) {
+        print("error")
+    }
+
+    func success() {
+        print("Success")
+    }
+}
+
+extension MainGameViewController: RPPreviewViewControllerDelegate {
+    @objc func startRecording() {
+            let recorder = RPScreenRecorder.shared()
+
+            recorder.startRecording{ [unowned self] (error) in
+                if let unwrappedError = error {
+                    print(unwrappedError.localizedDescription)
+                } else {
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Stop", style: .plain, target: self, action: #selector(self.stopRecording))
+                }
+            }
+        }
+
+        @objc func stopRecording() {
+            let recorder = RPScreenRecorder.shared()
+
+            recorder.stopRecording { [unowned self] (preview, error) in
+                if let unwrappedPreview = preview {
+                    unwrappedPreview.previewControllerDelegate = self
+                    self.present(unwrappedPreview, animated: true)
+                }
+            }
+        }
+
+        func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
+            dismiss(animated: true)
+        }
 }

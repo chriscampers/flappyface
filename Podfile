@@ -7,6 +7,7 @@ target 'FlappyHead' do
 
   # Pods for FlappyHead
   pod 'Google-Mobile-Ads-SDK'
+  pod 'ISHPermissionKit/Camera'
 
   target 'FlappyHeadTests' do
     inherit! :search_paths

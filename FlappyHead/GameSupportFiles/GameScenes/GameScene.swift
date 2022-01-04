@@ -13,15 +13,10 @@ protocol BirdMovingDelegate {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     var physicSettings: GamePhysicsSettingsProtocol = GameSettingManager.shared
     var faceTrigger: FaceTrigger?
     let gameSettingsManager = GameSettingManager.shared
-    let gamePlayManager: GamePlayManagerProtocol = GameManager.shared
+    var gamePlayManager: GamePlayManagerProtocol = GameManager.shared
     
     var bird:SKSpriteNode!
     var skyColor:SKColor!
@@ -30,9 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var movePipesAndRemove:SKAction!
     var moving:SKNode!
     var pipes:SKNode!
-    var canRestart = Bool()
     var scoreLabelNode:SKLabelNode!
-    var score = NSInteger()
     
     let birdCategory: UInt32 = 1 << 0
     let worldCategory: UInt32 = 1 << 1
@@ -41,9 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
-        
-        canRestart = true
-        
+
         // setup physics
         self.physicsWorld.gravity = CGVector( dx: 0.0, dy: -5.0 )
         self.physicsWorld.contactDelegate = self
@@ -145,12 +136,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ground)
         
         // Initialize label and create a label which holds the score
-        score = 0
         scoreLabelNode = SKLabelNode(fontNamed:"MarkerFelt-Wide")
         scoreLabelNode.position = CGPoint( x: self.frame.midX, y: 3 * self.frame.size.height / 4 )
         scoreLabelNode.zPosition = 100
         scoreLabelNode.fontSize = 40
-        scoreLabelNode.text = String(score)
+        scoreLabelNode.text = String(0)
         self.addChild(scoreLabelNode)
         
     }
@@ -197,7 +187,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func resetScene (){
+    func resetScene() {
         // Move bird to original position and reset velocity
         bird.position = CGPoint(x: self.frame.size.width / 2.5, y: self.frame.midX)
         bird.physicsBody?.velocity = CGVector( dx: 0, dy: 0 )
@@ -208,26 +198,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Remove all existing pipes
         pipes.removeAllChildren()
         
-        // Reset _canRestart
-        canRestart = false
-        
-        // Reset score
-        score = 0
-        scoreLabelNode.text = String(score)
-        
         // Restart animation
         moving.speed = 1
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if moving.speed > 0  {
-            for _ in touches { // do we need all touches?
-                createFire()
-                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
-            }
-        } else if canRestart {
-            self.resetScene()
-        }
+        moveBird()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -238,32 +213,52 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         if moving.speed > 0 {
-            if ( contact.bodyA.categoryBitMask & scoreCategory ) == scoreCategory || ( contact.bodyB.categoryBitMask & scoreCategory ) == scoreCategory {
+            if didUserContactPipe(contact: contact) {
+                userCrashed()
+                createBackgroundFlash()
+            } else {
                 // Bird has contact with score entity
-                score += 1
-                scoreLabelNode.text = String(score)
+                // TODO: possibly increment gamePlayManager.gameState.score
+                gamePlayManager.gameState.score = gamePlayManager.gameState.score + 1
+                scoreLabelNode.text = String(gamePlayManager.gameState.score)
                 
                 // Add a little visual feedback for the score increment
                 scoreLabelNode.run(SKAction.sequence([SKAction.scale(to: 1.5, duration:TimeInterval(0.1)), SKAction.scale(to: 1.0, duration:TimeInterval(0.1))]))
-            } else {
-                
-                moving.speed = 0
-                
-                bird.physicsBody?.collisionBitMask = worldCategory
-                bird.run(  SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
-                
-                self.canRestart = true
-                // Flash background if contact is detected
-                self.removeAction(forKey: "flash")
-                self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
-                    self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
-                    }),SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
-                        self.backgroundColor = self.skyColor
-                        }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
-                            self.canRestart = true
-                            })]), withKey: "flash")
             }
         }
+    }
+    
+    private func didUserContactPipe(contact: SKPhysicsContact) -> Bool {
+        return !((contact.bodyA.categoryBitMask & scoreCategory) == scoreCategory
+            || (contact.bodyB.categoryBitMask & scoreCategory) == scoreCategory)
+    }
+    
+    private func userCrashed() {
+        moving.speed = 0
+        gamePlayManager.pauseGame(causedByUserAction: true)
+        
+        // todo: make this only tryigger when user doesn't have any lifes lefts
+        registerEndOfGame()
+    }
+    
+    private func createBackgroundFlash() {
+        // Flash background if contact is detected
+        self.removeAction(forKey: "flash")
+        self.run(SKAction.sequence([SKAction.repeat(SKAction.sequence([SKAction.run({
+            self.backgroundColor = SKColor(red: 1, green: 0, blue: 0, alpha: 1.0)
+            }),SKAction.wait(forDuration: TimeInterval(0.05)), SKAction.run({
+                self.backgroundColor = self.skyColor
+                }), SKAction.wait(forDuration: TimeInterval(0.05))]), count:4), SKAction.run({
+            })]), withKey: "flash")
+    }
+    
+    func registerEndOfGame() {
+        // stop physics
+        moving.speed = 0
+        bird.physicsBody?.collisionBitMask = worldCategory
+        bird.run(  SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
+        
+        self.gamePlayManager.endGame()
     }
 }
 
@@ -271,11 +266,17 @@ extension GameScene: BirdMovingDelegate {
         func moveBird(){
             createFire()
             if moving.speed > 0  {
+                gamePlayManager.gameState.status = .inProgress
                 bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
                 bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
-            } else if canRestart {
-                self.gamePlayManager.roundEnded(score: 0)
+            } else if gamePlayManager.gameState.status == .over {
                 self.resetScene()
+                
+                // tell manager user initiated reset
+                gamePlayManager.restartGame()
+                
+                // Reset score
+                scoreLabelNode.text = String(gamePlayManager.gameState.score)
             }
         }
     

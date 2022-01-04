@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0BE876F7A2900788D0513810 /* Pods_FlappyHead_FlappyHeadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCFDF121B0F2AC70608F2216 /* Pods_FlappyHead_FlappyHeadUITests.framework */; };
+		7A5FBE0D2783C83900A87D3C /* InstaShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE0C2783C83900A87D3C /* InstaShare.swift */; };
+		7A5FBE0F2783F4D200A87D3C /* PermissionPromptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FBE0E2783F4D100A87D3C /* PermissionPromptViewController.xib */; };
+		7A5FBE112783F50800A87D3C /* PermissionPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE102783F50800A87D3C /* PermissionPromptViewController.swift */; };
+		7AFA5F8B2781768500D16A51 /* ModalPromptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8A2781768500D16A51 /* ModalPromptViewController.xib */; };
+		7AFA5F8D2781769D00D16A51 /* ModalPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8C2781769C00D16A51 /* ModalPromptViewController.swift */; };
+		7AFA5F8F278248D500D16A51 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8E278248D500D16A51 /* UIView+Utils.swift */; };
 		849F5EFCE93A8ABE7C87D978 /* Pods_FlappyHeadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0D0E9CB387BB4EE2576143 /* Pods_FlappyHeadTests.framework */; };
 		A10803631A65657FCDCAB532 /* Pods_FlappyHead.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECE90EC97D10F7644FFF8A8 /* Pods_FlappyHead.framework */; };
 		AD5351A926D2DBAC002CB457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5351A826D2DBAC002CB457 /* AppDelegate.swift */; };
@@ -50,6 +56,12 @@
 
 /* Begin PBXFileReference section */
 		7A459B9328833F0470456C37 /* Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig"; path = "Target Support Files/Pods-FlappyHead-FlappyHeadUITests/Pods-FlappyHead-FlappyHeadUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A5FBE0C2783C83900A87D3C /* InstaShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstaShare.swift; sourceTree = "<group>"; };
+		7A5FBE0E2783F4D100A87D3C /* PermissionPromptViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PermissionPromptViewController.xib; sourceTree = "<group>"; };
+		7A5FBE102783F50800A87D3C /* PermissionPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionPromptViewController.swift; sourceTree = "<group>"; };
+		7AFA5F8A2781768500D16A51 /* ModalPromptViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalPromptViewController.xib; sourceTree = "<group>"; };
+		7AFA5F8C2781769C00D16A51 /* ModalPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPromptViewController.swift; sourceTree = "<group>"; };
+		7AFA5F8E278248D500D16A51 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		7ECE90EC97D10F7644FFF8A8 /* Pods_FlappyHead.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlappyHead.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9146A6C9B9E73C612788063 /* Pods-FlappyHead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead.release.xcconfig"; path = "Target Support Files/Pods-FlappyHead/Pods-FlappyHead.release.xcconfig"; sourceTree = "<group>"; };
 		A94A1877C3E229DD07789CE6 /* Pods-FlappyHead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead.debug.xcconfig"; path = "Target Support Files/Pods-FlappyHead/Pods-FlappyHead.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +125,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7AFA5F892781758C00D16A51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7AFA5F8A2781768500D16A51 /* ModalPromptViewController.xib */,
+				7AFA5F8C2781769C00D16A51 /* ModalPromptViewController.swift */,
+				7A5FBE0E2783F4D100A87D3C /* PermissionPromptViewController.xib */,
+				7A5FBE102783F50800A87D3C /* PermissionPromptViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A8EEE6C965CDF91859F2C930 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +250,7 @@
 		AD5351E926D2DBDB002CB457 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7AFA5F892781758C00D16A51 /* Views */,
 				AD5351EA26D2DBDB002CB457 /* MainGameViewController.swift */,
 			);
 			path = ViewControllers;
@@ -254,6 +278,8 @@
 		ADA95FED26D47BA5000AF0CD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7AFA5F8E278248D500D16A51 /* UIView+Utils.swift */,
+				7A5FBE0C2783C83900A87D3C /* InstaShare.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -277,7 +303,6 @@
 				B1780FD8FD0EB1802B2931F6 /* Pods-FlappyHeadTests.debug.xcconfig */,
 				DC30EFD42E69D5543F3E00F1 /* Pods-FlappyHeadTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -377,7 +402,7 @@
 			);
 			mainGroup = AD53519C26D2DBAC002CB457;
 			packageReferences = (
-				AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel.git" */,
+				AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel" */,
 			);
 			productRefGroup = AD5351A626D2DBAC002CB457 /* Products */;
 			projectDirPath = "";
@@ -396,9 +421,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5351F126D2DBDB002CB457 /* Main.storyboard in Resources */,
+				7A5FBE0F2783F4D200A87D3C /* PermissionPromptViewController.xib in Resources */,
 				ADDE17E02766EDF500E146A3 /* spark.png in Resources */,
 				AD5351B526D2DBAD002CB457 /* LaunchScreen.storyboard in Resources */,
 				AD5351F326D2DBDB002CB457 /* GameScene.sks in Resources */,
+				7AFA5F8B2781768500D16A51 /* ModalPromptViewController.xib in Resources */,
 				AD5351F626D2DBDB002CB457 /* bird.atlas in Resources */,
 				AD5351F726D2DBDB002CB457 /* Assets.xcassets in Resources */,
 				ADDE17D52766EDF500E146A3 /* FireParticles.sks in Resources */,
@@ -534,10 +561,14 @@
 				AD53521426D2E3CF002CB457 /* FaceTrigger.swift in Sources */,
 				AD53521326D2E3CF002CB457 /* FaceTriggerEvaluators.swift in Sources */,
 				AD5351F826D2DBDB002CB457 /* MainGameViewController.swift in Sources */,
+				7A5FBE112783F50800A87D3C /* PermissionPromptViewController.swift in Sources */,
+				7A5FBE0D2783C83900A87D3C /* InstaShare.swift in Sources */,
 				AD5351F226D2DBDB002CB457 /* GameSettingManager.swift in Sources */,
+				7AFA5F8D2781769D00D16A51 /* ModalPromptViewController.swift in Sources */,
 				AD5351A926D2DBAC002CB457 /* AppDelegate.swift in Sources */,
 				AD5351AB26D2DBAC002CB457 /* SceneDelegate.swift in Sources */,
 				AD5351F426D2DBDB002CB457 /* GameScene.swift in Sources */,
+				7AFA5F8F278248D500D16A51 /* UIView+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,7 +746,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3QF4959CZ;
+				DEVELOPMENT_TEAM = 792UA3WQAJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -739,7 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3QF4959CZ;
+				DEVELOPMENT_TEAM = 792UA3WQAJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -886,7 +917,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel.git" */ = {
+		AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/superpeteblaze/ScalingCarousel.git";
 			requirement = {
@@ -899,7 +930,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		AD53520526D2DD3B002CB457 /* ScalingCarousel */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel.git" */;
+			package = AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel" */;
 			productName = ScalingCarousel;
 		};
 /* End XCSwiftPackageProductDependency section */

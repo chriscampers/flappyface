@@ -7,17 +7,31 @@
 
 import Foundation
 
-protocol GamePlayManagerProtocol {
-    var delegate: GamePlayManagerDelegate? { get set }
-    func currentFacialActionName() -> String
-    func isFacialActionValid(action: FaceTrackingAction) -> Bool
-    func roundEnded(score: Int)
-    
+enum GameStatus {
+    case inProgress
+    case over
+    case pause
 }
 
-protocol GamePlayManagerDelegate {
+protocol GamePlayManagerProtocol {
+    var delegate: GameManagerDelegate? { get set }
+    var gameState: GameState { get set }
+    func endGame()
+    func restartGame()
+    func resumeGame()
+    func pauseGame(causedByUserAction: Bool)
+    func currentFacialActionName() -> String
+    func canShowPrompt() -> Bool
+}
+
+protocol GameManagerMechanicsProtocol {
+    func isFacialActionValid(action: FaceTrackingAction) -> Bool
+}
+
+protocol GameManagerDelegate {
     func currentActionChanged(newActionName: String)
     func displayFullScreenAd()
+    func displayExtraLifePromptIfNeeded()
 }
 
 enum FaceTrackingAction: String {
@@ -29,13 +43,28 @@ enum FaceTrackingAction: String {
     case kissyFace = "Kissy Face"
 }
 
-class GameManager: GamePlayManagerProtocol {
+struct GameState {
+    var status: GameStatus
+    
+    // number of pipes users has gone through
+    var score: Int = 0
+    
+    // number of lifes the user has left
+    var lifes: Int = 0
+    
+    // the facial action the users
+    var currentAction: FaceTrackingAction = .blink
+    
+    // self explanitory
+    var numberOfCurretActionsRemaining = 0
+}
+
+class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
     
     static let shared = GameManager()
     
-    var delegate: GamePlayManagerDelegate?
-    private var numberOfActions = 3
-    private var currentIndex: Int = 0
+    var delegate: GameManagerDelegate?
+    var gameState: GameState = .init(status: .inProgress)
     private var validActionList: [FaceTrackingAction] = [.leftWink,
                                                          .rightWink,
                                                          .blink,
@@ -44,34 +73,57 @@ class GameManager: GamePlayManagerProtocol {
     
  
     func isFacialActionValid(action: FaceTrackingAction) -> Bool {
-        if action == validActionList[currentIndex] {
-            numberOfActions = numberOfActions - 1
-            if numberOfActions <= 0 {
-                numberOfActions = 3
-                currentIndex = generateRandomNumber()
+        if action == gameState.currentAction {
+            gameState.numberOfCurretActionsRemaining = gameState.numberOfCurretActionsRemaining - 1
+    
+            if gameState.numberOfCurretActionsRemaining <= 0 {
+                gameState.numberOfCurretActionsRemaining = 3
+                gameState.currentAction = generateRandomAction()
             }
 
-            delegate?.currentActionChanged(newActionName: validActionList[currentIndex].rawValue)
+            delegate?.currentActionChanged(newActionName: gameState.currentAction.rawValue)
             return true
         }
         return false
     }
     
     func currentFacialActionName() -> String {
-        return validActionList[currentIndex].rawValue + " x" + String(numberOfActions)
+        return gameState.currentAction.rawValue + " x" + String(gameState.numberOfCurretActionsRemaining)
     }
     
-    func roundEnded(score: Int) {
-        resetGameVars()
-        delegate?.displayFullScreenAd()
+    func endGame() {
+        // todo: as
+        gameState.status = .over
+        resetGameStateVars()
     }
     
-    private func resetGameVars() {
-        numberOfActions = 3
-        currentIndex = 0
+    func restartGame() {
+        gameState.status = .over
     }
     
-    private func generateRandomNumber() -> Int {
-        return Int.random(in: 0..<validActionList.count)
+    func pauseGame(causedByUserAction: Bool = true) {
+        gameState.status = .pause
+        if causedByUserAction {
+            delegate?.displayExtraLifePromptIfNeeded()
+        }
+
+    }
+    
+    func resumeGame() {
+        gameState.status = .inProgress
+    }
+    
+    func canShowPrompt() -> Bool{
+        return Bool.random()
+    }
+    
+    private func resetGameStateVars() {
+        gameState.numberOfCurretActionsRemaining = 3
+//        gameState.currentAction = generateRandomAction()
+        gameState.score = 0
+    }
+    
+    private func generateRandomAction() -> FaceTrackingAction {
+        return validActionList[Int.random(in: 0..<validActionList.count)]
     }
 }
