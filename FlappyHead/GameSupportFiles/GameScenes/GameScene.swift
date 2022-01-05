@@ -8,8 +8,9 @@
 
 import SpriteKit
 
-protocol BirdMovingDelegate {
-    func moveBird()
+protocol GameSceneProtocol {
+    func moveUserCharacter()
+    func registerEndOfGame()
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -202,7 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         moving.speed = 1
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        moveBird()
+        moveUserCharacter()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -236,9 +237,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func userCrashed() {
         moving.speed = 0
         gamePlayManager.pauseGame(causedByUserAction: true)
-        
-        // todo: make this only tryigger when user doesn't have any lifes lefts
-        registerEndOfGame()
     }
     
     private func createBackgroundFlash() {
@@ -257,19 +255,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         moving.speed = 0
         bird.physicsBody?.collisionBitMask = worldCategory
         bird.run(  SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1), completion:{self.bird.speed = 0 })
-        
-        self.gamePlayManager.endGame()
     }
 }
 
-extension GameScene: BirdMovingDelegate {
-        func moveBird(){
-            createFire()
-            if moving.speed > 0  {
+extension GameScene: GameSceneProtocol {
+        func moveUserCharacter(){
+            // We are trying to move the bird even though the game is ended. Lets start this thing backup
+            if gamePlayManager.gameState.status == .over {
                 gamePlayManager.gameState.status = .inProgress
-                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
-            } else if gamePlayManager.gameState.status == .over {
                 self.resetScene()
                 
                 // tell manager user initiated reset
@@ -277,6 +270,12 @@ extension GameScene: BirdMovingDelegate {
                 
                 // Reset score
                 scoreLabelNode.text = String(gamePlayManager.gameState.score)
+            }
+            
+            if moving.speed > 0  {
+                gamePlayManager.gameState.status = .inProgress
+                bird.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 30))
             }
         }
     

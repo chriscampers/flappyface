@@ -9,20 +9,25 @@ import Foundation
 import UIKit
 import Photos
 
-public protocol ShareStoriesDelegate: AnyObject {
+public protocol InstagramSharingDelegate: AnyObject {
     func error(message: String)
     func success()
 }
 
-open class ShareImageInstagram {
-    static let shared = ShareImageInstagram()
+class InstagramSharingManager {
+    static let shared = InstagramSharingManager()
+    
+    // MARK: File consts
     private let instagramURL = URL(string: "instagram://app")
     private let storiesURL = URL(string: "instagram-stories://share")
     
-    weak var delegate: ShareStoriesDelegate?
+    weak var delegate: InstagramSharingDelegate?
+    
+    init() {
+        // Nothing to init...yet!
+    }
     
     public func postToFeed(image: UIImage, caption: String, bounds: CGRect, view: UIView) {
-        
         PHPhotoLibrary.shared().performChanges({
             PHAssetChangeRequest.creationRequestForAsset(from: image)
         }, completionHandler: { [weak self] success, error in
@@ -46,7 +51,6 @@ open class ShareImageInstagram {
                             } else {
                                 UIApplication.shared.openURL(url)
                                 self?.delegate?.success()
-                                
                             }
                         } else {
                             self?.delegate?.error(message: "Instagram not found")
@@ -75,8 +79,8 @@ open class ShareImageInstagram {
                     return
                 }
                 let pasteboardItems = ["com.instagram.sharedSticker.stickerImage": image,
-                                       "com.instagram.sharedSticker.backgroundTopColor" : backgroundTopColorHex,
-                                       "com.instagram.sharedSticker.backgroundBottomColor" : backgroundBottomColorHex,
+                                       "com.instagram.sharedSticker.backgroundTopColor": backgroundTopColorHex,
+                                       "com.instagram.sharedSticker.backgroundBottomColor": backgroundBottomColorHex,
                                        "com.instagram.sharedSticker.backgroundVideo": data,
                                        "com.instagram.sharedSticker.contentURL": deepLink] as [String : Any]
                 
@@ -100,7 +104,6 @@ open class ShareImageInstagram {
                 self?.delegate?.error(message: "Could not open instagram URL. Check if you have instagram installed and you configured your LSApplicationQueriesSchemes to enable instagram's url")
             }
         }
-        
     }
     
     public func postToStories(image: UIImage, backgroundTopColorHex: String, backgroundBottomColorHex: String, deepLink: String) {

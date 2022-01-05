@@ -14,7 +14,7 @@ protocol ModalPromptDelegate {
 class ModalPromptViewController: UIViewController {
     enum ReasonForClosing {
         case cancel
-        case watched
+        case okayBtn
         case other
     }
     
@@ -36,13 +36,10 @@ class ModalPromptViewController: UIViewController {
     }
     
     @IBAction func okayBtnAction(_ sender: Any) {
-        delegate?.reasonForDimissing(reason: .watched)
+        delegate?.reasonForDimissing(reason: .okayBtn)
     }
     
     @IBAction func cancelBtnAction(_ sender: Any) {
         delegate?.reasonForDimissing(reason: .cancel)
     }
-    //    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
 }

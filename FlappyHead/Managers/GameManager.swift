@@ -15,6 +15,7 @@ enum GameStatus {
 
 protocol GamePlayManagerProtocol {
     var delegate: GameManagerDelegate? { get set }
+    var gameScene: GameSceneProtocol? { get set }
     var gameState: GameState { get set }
     func endGame()
     func restartGame()
@@ -22,6 +23,7 @@ protocol GamePlayManagerProtocol {
     func pauseGame(causedByUserAction: Bool)
     func currentFacialActionName() -> String
     func canShowPrompt() -> Bool
+    func moveGameCharacter()
 }
 
 protocol GameManagerMechanicsProtocol {
@@ -44,7 +46,7 @@ enum FaceTrackingAction: String {
 }
 
 struct GameState {
-    var status: GameStatus
+    var status: GameStatus = .over
     
     // number of pipes users has gone through
     var score: Int = 0
@@ -57,12 +59,16 @@ struct GameState {
     
     // self explanitory
     var numberOfCurretActionsRemaining = 0
+    
+    var isGameInProgress: Bool {
+        return status == .inProgress
+    }
 }
 
 class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
-    
     static let shared = GameManager()
     
+    var gameScene: GameSceneProtocol?
     var delegate: GameManagerDelegate?
     var gameState: GameState = .init(status: .inProgress)
     private var validActionList: [FaceTrackingAction] = [.leftWink,
@@ -73,18 +79,7 @@ class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
     
  
     func isFacialActionValid(action: FaceTrackingAction) -> Bool {
-        if action == gameState.currentAction {
-            gameState.numberOfCurretActionsRemaining = gameState.numberOfCurretActionsRemaining - 1
-    
-            if gameState.numberOfCurretActionsRemaining <= 0 {
-                gameState.numberOfCurretActionsRemaining = 3
-                gameState.currentAction = generateRandomAction()
-            }
-
-            delegate?.currentActionChanged(newActionName: gameState.currentAction.rawValue)
-            return true
-        }
-        return false
+        return action == gameState.currentAction
     }
     
     func currentFacialActionName() -> String {
@@ -93,12 +88,13 @@ class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
     
     func endGame() {
         // todo: as
+        gameScene?.registerEndOfGame()
         gameState.status = .over
         resetGameStateVars()
     }
     
     func restartGame() {
-        gameState.status = .over
+        gameState.status = .inProgress 
     }
     
     func pauseGame(causedByUserAction: Bool = true) {
@@ -117,10 +113,32 @@ class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
         return Bool.random()
     }
     
+    func moveGameCharacter() {
+        if gameState.status == .pause {
+            return
+        }
+        
+        gameScene?.moveUserCharacter()
+        updateGameStateFromMovement()
+    }
+    
+    private func updateGameStateFromMovement() {
+        gameState.numberOfCurretActionsRemaining = gameState.numberOfCurretActionsRemaining - 1
+
+        if gameState.numberOfCurretActionsRemaining <= 0 {
+            gameState.numberOfCurretActionsRemaining = 3
+            gameState.currentAction = generateRandomAction()
+        }
+
+        delegate?.currentActionChanged(newActionName: gameState.currentAction.rawValue)
+    }
+    
     private func resetGameStateVars() {
         gameState.numberOfCurretActionsRemaining = 3
-//        gameState.currentAction = generateRandomAction()
+        gameState.currentAction = generateRandomAction()
         gameState.score = 0
+        
+        delegate?.currentActionChanged(newActionName: gameState.currentAction.rawValue)
     }
     
     private func generateRandomAction() -> FaceTrackingAction {

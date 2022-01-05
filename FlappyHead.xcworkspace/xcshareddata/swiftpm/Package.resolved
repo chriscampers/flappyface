@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "L10n-swift",
+        "repositoryURL": "https://github.com/Decybel07/L10n-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "ae3daf5adf2ec349a871c1921526fa63af05d8da",
+          "version": "5.10.0"
+        }
+      },
+      {
         "package": "ScalingCarousel",
         "repositoryURL": "https://github.com/superpeteblaze/ScalingCarousel.git",
         "state": {

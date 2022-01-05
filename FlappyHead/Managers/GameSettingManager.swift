@@ -28,6 +28,9 @@ class GameSettingManager: GamePhysicsSettingsProtocol {
     var kissyFaceEnabled: Bool = false
     var smileEnabled:Bool = false
     
+    //MARK: Privacy Settings
+    var canRecordScreen: Bool = true
+    
     init() {
         
     }

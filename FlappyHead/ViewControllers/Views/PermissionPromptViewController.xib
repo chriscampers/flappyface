@@ -1,111 +1,135 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SamplePermissionViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PermissionPromptViewController" customModule="FlappyHead" customModuleProvider="target">
             <connections>
-                <outlet property="textLabel" destination="hXp-jr-f3P" id="8gV-Ru-9yq"/>
-                <outlet property="titleLabel" destination="LkO-dh-5rm" id="eVZ-VU-gri"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="bodyLabel" destination="c7I-yx-3AA" id="PJ3-J3-041"/>
+                <outlet property="permissionIcon" destination="rEV-r8-sUx" id="JkT-x4-yO5"/>
+                <outlet property="titleLabel" destination="oc8-xN-tPp" id="qhx-HH-D76"/>
+                <outlet property="view" destination="v2I-tf-yht" id="MrC-oQ-lxW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2I-tf-yht">
-                    <rect key="frame" x="0.0" y="378" width="320" height="190"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGM-zE-6QZ">
-                            <rect key="frame" x="10" y="10" width="300" height="50"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rEV-r8-sUx">
+                            <rect key="frame" x="100" y="50.5" width="175" height="173"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" secondItem="rEV-r8-sUx" secondAttribute="width" multiplier="275:275" id="8hy-gR-xx5"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGM-zE-6QZ">
+                            <rect key="frame" x="10" y="487" width="355" height="50"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Zuc-hG-Eu6"/>
                             </constraints>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                            <state key="normal" title="Allow">
-                                <color key="titleColor" red="0.11436311155557632" green="0.87042808532714844" blue="0.018413085490465164" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Allow" image="checkmark.seal" catalog="system">
+                                <color key="titleColor" systemColor="tintColor"/>
+                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="requestPermissionFromSender:" destination="-1" eventType="touchUpInside" id="WV8-8W-MIA"/>
+                                <action selector="allowButtonPressed:" destination="-1" eventType="touchUpInside" id="66g-bg-Suq"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWd-fX-bqy">
-                            <rect key="frame" x="10" y="70" width="300" height="50"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWd-fX-bqy">
+                            <rect key="frame" x="10" y="547" width="355" height="50"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="01D-Kl-Cj7"/>
                             </constraints>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                            <state key="normal" title="Don't ask again">
-                                <color key="titleColor" red="0.98594826459884644" green="0.0" blue="0.026950567960739136" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Don't ask again" image="xmark.seal" catalog="system">
+                                <color key="titleColor" systemColor="tintColor"/>
+                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="changePermissionStateToDontAskFromSender:" destination="-1" eventType="touchUpInside" id="gtG-fX-0SL"/>
+                                <action selector="dontAskButtonPressed:" destination="-1" eventType="touchUpInside" id="Lvf-iK-Pde"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-FE-gv7">
-                            <rect key="frame" x="10" y="130" width="300" height="50"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-FE-gv7">
+                            <rect key="frame" x="10" y="607" width="355" height="50"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Zd0-ou-fiT"/>
                             </constraints>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                            <state key="normal" title="Later">
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Later" image="questionmark.app" catalog="system">
+                                <color key="titleColor" systemColor="tintColor"/>
+                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="changePermissionStateToAskAgainFromSender:" destination="-1" eventType="touchUpInside" id="7N1-Nr-BBf"/>
+                                <action selector="laterButtonPressed:" destination="-1" eventType="touchUpInside" id="xuO-Pd-bVU"/>
                             </connections>
                         </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="4ul-0b-vDd">
+                            <rect key="frame" x="0.0" y="207.5" width="375" height="123.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Permissions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc8-xN-tPp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7I-yx-3AA">
+                                    <rect key="frame" x="0.0" y="77" width="375" height="46.5"/>
+                                    <string key="text">This app requires camera permissions to detect facial expressions during gameplay. Please allow camera permissions in order to be able to use this app.</string>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="fWd-fX-bqy" firstAttribute="top" secondItem="PGM-zE-6QZ" secondAttribute="bottom" constant="10" id="EWw-Jm-rCP"/>
                         <constraint firstAttribute="bottom" secondItem="qYA-FE-gv7" secondAttribute="bottom" constant="10" id="Mof-qT-Xst"/>
                         <constraint firstItem="qYA-FE-gv7" firstAttribute="top" secondItem="fWd-fX-bqy" secondAttribute="bottom" constant="10" id="MsO-iR-Qc3"/>
+                        <constraint firstAttribute="trailing" secondItem="rEV-r8-sUx" secondAttribute="trailing" constant="100" id="QfA-S5-Gf7"/>
                         <constraint firstItem="qYA-FE-gv7" firstAttribute="centerX" secondItem="fWd-fX-bqy" secondAttribute="centerX" id="W6W-MJ-M2j"/>
+                        <constraint firstAttribute="trailing" secondItem="4ul-0b-vDd" secondAttribute="trailing" id="Wh4-Ki-Jua"/>
+                        <constraint firstItem="4ul-0b-vDd" firstAttribute="leading" secondItem="v2I-tf-yht" secondAttribute="leading" id="aww-Wf-f2r"/>
                         <constraint firstItem="qYA-FE-gv7" firstAttribute="leading" secondItem="v2I-tf-yht" secondAttribute="leading" constant="10" id="e39-98-UpJ"/>
                         <constraint firstItem="PGM-zE-6QZ" firstAttribute="centerX" secondItem="qYA-FE-gv7" secondAttribute="centerX" id="elZ-Sp-gDJ"/>
+                        <constraint firstItem="rEV-r8-sUx" firstAttribute="top" secondItem="v2I-tf-yht" secondAttribute="top" constant="50" id="g6D-0W-BdR"/>
+                        <constraint firstItem="4ul-0b-vDd" firstAttribute="top" secondItem="rEV-r8-sUx" secondAttribute="baseline" constant="24" id="hQ1-vS-5Ni"/>
                         <constraint firstAttribute="trailing" secondItem="qYA-FE-gv7" secondAttribute="trailing" constant="10" id="kRX-QZ-88e"/>
-                        <constraint firstItem="PGM-zE-6QZ" firstAttribute="top" secondItem="v2I-tf-yht" secondAttribute="top" constant="10" id="kp0-YB-feN"/>
                         <constraint firstItem="qYA-FE-gv7" firstAttribute="width" secondItem="fWd-fX-bqy" secondAttribute="width" id="mjV-3g-zV1"/>
+                        <constraint firstItem="rEV-r8-sUx" firstAttribute="leading" secondItem="v2I-tf-yht" secondAttribute="leading" constant="100" id="nQ0-LV-zx9"/>
                         <constraint firstItem="PGM-zE-6QZ" firstAttribute="width" secondItem="qYA-FE-gv7" secondAttribute="width" id="zUE-ta-QxV"/>
                     </constraints>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="LkO-dh-5rm">
-                    <rect key="frame" x="10" y="50" width="300" height="20"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="hXp-jr-f3P">
-                    <rect key="frame" x="10" y="90" width="300" height="20"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="v2I-tf-yht" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9h1-cB-JLJ"/>
-                <constraint firstAttribute="trailing" secondItem="hXp-jr-f3P" secondAttribute="trailing" constant="10" id="OJO-fU-49G"/>
-                <constraint firstAttribute="bottom" secondItem="v2I-tf-yht" secondAttribute="bottom" id="RC4-mF-lmr"/>
-                <constraint firstAttribute="trailing" secondItem="LkO-dh-5rm" secondAttribute="trailing" constant="10" id="SVt-Jq-TV9"/>
-                <constraint firstItem="hXp-jr-f3P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="ZFK-8A-NRc"/>
-                <constraint firstItem="LkO-dh-5rm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="jC8-0h-dGL"/>
-                <constraint firstItem="v2I-tf-yht" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hXp-jr-f3P" secondAttribute="bottom" constant="10" id="jc6-jt-Exj"/>
-                <constraint firstItem="LkO-dh-5rm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="o4k-w5-hRx"/>
-                <constraint firstAttribute="trailing" secondItem="v2I-tf-yht" secondAttribute="trailing" id="qkA-6p-Vg3"/>
-                <constraint firstItem="hXp-jr-f3P" firstAttribute="top" secondItem="LkO-dh-5rm" secondAttribute="bottom" constant="20" id="wTL-U1-0ov"/>
+                <constraint firstItem="v2I-tf-yht" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5hj-Hq-6IG"/>
+                <constraint firstItem="v2I-tf-yht" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottomMargin" id="ARm-St-6aI"/>
+                <constraint firstItem="v2I-tf-yht" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="dWS-PX-123"/>
+                <constraint firstItem="v2I-tf-yht" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qwd-rU-xct"/>
             </constraints>
-            <point key="canvasLocation" x="-586" y="285"/>
+            <point key="canvasLocation" x="-850.39999999999998" y="190.25487256371815"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="checkmark.seal" catalog="system" width="128" height="128"/>
+        <image name="questionmark.app" catalog="system" width="128" height="114"/>
+        <image name="xmark.seal" catalog="system" width="128" height="128"/>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
