@@ -11,7 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PermissionPromptViewController" customModule="FlappyHead" customModuleProvider="target">
             <connections>
                 <outlet property="bodyLabel" destination="c7I-yx-3AA" id="PJ3-J3-041"/>
+                <outlet property="negativeButton" destination="sFf-Ri-oOG" id="WYR-Cp-fnC"/>
                 <outlet property="permissionIcon" destination="rEV-r8-sUx" id="JkT-x4-yO5"/>
+                <outlet property="positiveButton" destination="qYA-FE-gv7" id="YWK-6u-Jel"/>
                 <outlet property="titleLabel" destination="oc8-xN-tPp" id="qhx-HH-D76"/>
                 <outlet property="view" destination="v2I-tf-yht" id="MrC-oQ-lxW"/>
             </connections>
@@ -32,52 +34,43 @@
                                 <constraint firstAttribute="height" secondItem="rEV-r8-sUx" secondAttribute="width" multiplier="275:275" id="8hy-gR-xx5"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGM-zE-6QZ">
-                            <rect key="frame" x="10" y="487" width="355" height="50"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Zuc-hG-Eu6"/>
-                            </constraints>
-                            <state key="normal" title="Allow" image="checkmark.seal" catalog="system">
-                                <color key="titleColor" systemColor="tintColor"/>
-                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="allowButtonPressed:" destination="-1" eventType="touchUpInside" id="66g-bg-Suq"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWd-fX-bqy">
-                            <rect key="frame" x="10" y="547" width="355" height="50"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="01D-Kl-Cj7"/>
-                            </constraints>
-                            <state key="normal" title="Don't ask again" image="xmark.seal" catalog="system">
-                                <color key="titleColor" systemColor="tintColor"/>
-                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="dontAskButtonPressed:" destination="-1" eventType="touchUpInside" id="Lvf-iK-Pde"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-FE-gv7">
-                            <rect key="frame" x="10" y="607" width="355" height="50"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Zd0-ou-fiT"/>
-                            </constraints>
-                            <state key="normal" title="Later" image="questionmark.app" catalog="system">
-                                <color key="titleColor" systemColor="tintColor"/>
-                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="laterButtonPressed:" destination="-1" eventType="touchUpInside" id="xuO-Pd-bVU"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VLn-Q0-slE" userLabel="bottomStack">
+                            <rect key="frame" x="10" y="505" width="355" height="112"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-FE-gv7">
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Zd0-ou-fiT"/>
+                                    </constraints>
+                                    <state key="normal" title="Go To Settings" image="gearshape" catalog="system">
+                                        <color key="titleColor" systemColor="tintColor"/>
+                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="positiveButtonPressed:" destination="-1" eventType="touchUpInside" id="Efs-rJ-02i"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFf-Ri-oOG">
+                                    <rect key="frame" x="0.0" y="62" width="355" height="50"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="vF2-qp-OCf"/>
+                                    </constraints>
+                                    <state key="normal" title="Don't Allow" image="xmark.seal" catalog="system">
+                                        <color key="titleColor" systemColor="tintColor"/>
+                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="negativeButtonPressed:" destination="-1" eventType="touchUpInside" id="pIM-R7-Fhd"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="4ul-0b-vDd">
                             <rect key="frame" x="0.0" y="207.5" width="375" height="123.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Permissions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc8-xN-tPp">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Permissions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oc8-xN-tPp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,21 +88,15 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="fWd-fX-bqy" firstAttribute="top" secondItem="PGM-zE-6QZ" secondAttribute="bottom" constant="10" id="EWw-Jm-rCP"/>
-                        <constraint firstAttribute="bottom" secondItem="qYA-FE-gv7" secondAttribute="bottom" constant="10" id="Mof-qT-Xst"/>
-                        <constraint firstItem="qYA-FE-gv7" firstAttribute="top" secondItem="fWd-fX-bqy" secondAttribute="bottom" constant="10" id="MsO-iR-Qc3"/>
+                        <constraint firstAttribute="trailing" secondItem="VLn-Q0-slE" secondAttribute="trailing" constant="10" id="HSb-Jc-VJN"/>
                         <constraint firstAttribute="trailing" secondItem="rEV-r8-sUx" secondAttribute="trailing" constant="100" id="QfA-S5-Gf7"/>
-                        <constraint firstItem="qYA-FE-gv7" firstAttribute="centerX" secondItem="fWd-fX-bqy" secondAttribute="centerX" id="W6W-MJ-M2j"/>
                         <constraint firstAttribute="trailing" secondItem="4ul-0b-vDd" secondAttribute="trailing" id="Wh4-Ki-Jua"/>
+                        <constraint firstItem="VLn-Q0-slE" firstAttribute="leading" secondItem="v2I-tf-yht" secondAttribute="leading" constant="10" id="abY-Yb-9u4"/>
+                        <constraint firstAttribute="bottom" secondItem="VLn-Q0-slE" secondAttribute="bottom" constant="50" id="ar2-ci-d6n"/>
                         <constraint firstItem="4ul-0b-vDd" firstAttribute="leading" secondItem="v2I-tf-yht" secondAttribute="leading" id="aww-Wf-f2r"/>
-                        <constraint firstItem="qYA-FE-gv7" firstAttribute="leading" secondItem="v2I-tf-yht" secondAttribute="leading" constant="10" id="e39-98-UpJ"/>
-                        <constraint firstItem="PGM-zE-6QZ" firstAttribute="centerX" secondItem="qYA-FE-gv7" secondAttribute="centerX" id="elZ-Sp-gDJ"/>
                         <constraint firstItem="rEV-r8-sUx" firstAttribute="top" secondItem="v2I-tf-yht" secondAttribute="top" constant="50" id="g6D-0W-BdR"/>
                         <constraint firstItem="4ul-0b-vDd" firstAttribute="top" secondItem="rEV-r8-sUx" secondAttribute="baseline" constant="24" id="hQ1-vS-5Ni"/>
-                        <constraint firstAttribute="trailing" secondItem="qYA-FE-gv7" secondAttribute="trailing" constant="10" id="kRX-QZ-88e"/>
-                        <constraint firstItem="qYA-FE-gv7" firstAttribute="width" secondItem="fWd-fX-bqy" secondAttribute="width" id="mjV-3g-zV1"/>
                         <constraint firstItem="rEV-r8-sUx" firstAttribute="leading" secondItem="v2I-tf-yht" secondAttribute="leading" constant="100" id="nQ0-LV-zx9"/>
-                        <constraint firstItem="PGM-zE-6QZ" firstAttribute="width" secondItem="qYA-FE-gv7" secondAttribute="width" id="zUE-ta-QxV"/>
                     </constraints>
                 </view>
             </subviews>
@@ -125,8 +112,7 @@
     </objects>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
-        <image name="checkmark.seal" catalog="system" width="128" height="128"/>
-        <image name="questionmark.app" catalog="system" width="128" height="114"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="xmark.seal" catalog="system" width="128" height="128"/>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

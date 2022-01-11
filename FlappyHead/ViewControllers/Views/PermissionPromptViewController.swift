@@ -19,15 +19,20 @@ class PermissionPromptViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!
     
+    @IBOutlet weak var positiveButton: UIButton!
+    @IBOutlet weak var negativeButton: UIButton!
     var permissionType: PermissionType!
     
     override func viewDidLoad() {
-        // TODO: set text
+        // Prevent swipe down dismissal
+        isModalInPresentation = true
+        
         switch permissionType {
         case .camera:
             permissionIcon.image = UIImage(systemName: "camera")
-            titleLabel.text = "Camera Permissions".l10n()
-            bodyLabel.text = "test pizza test".l10n()
+            titleLabel.text = StringConstants.cameraPermissionsPrompt_title()
+            bodyLabel.text = StringConstants.cameraPermissionsPrompt_body()
+            negativeButton.isHidden = true
         case .recording:
             permissionIcon.image = UIImage(systemName: "video.circle")
         case .none:
@@ -35,12 +40,32 @@ class PermissionPromptViewController: UIViewController {
         }
     }
     
-    @IBAction func allowButtonPressed(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        switch permissionType {
+        case .camera:
+            if PermissionsManager.shared.isCameraAuthorizeOrWaitingAutorization() {
+                dismiss(animated: true, completion: nil)
+            }
+        case .recording:
+            break
+        case .none:
+            break
+        }
     }
     
-    @IBAction func dontAskButtonPressed(_ sender: Any) {
+    @IBAction func positiveButtonPressed(_ sender: Any) {
+        switch permissionType {
+        case .camera:
+            PermissionsManager.shared.openAppSettings()
+        case .recording:
+            break
+        case .none:
+            break
+        }
     }
     
-    @IBAction func laterButtonPressed(_ sender: Any) {
+    @IBAction func negativeButtonPressed(_ sender: Any) {
     }
+    
 }

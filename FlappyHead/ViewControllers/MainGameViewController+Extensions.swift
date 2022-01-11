@@ -14,6 +14,11 @@ extension MainGameViewController: FaceTriggerDelegate {
     // MARK: Smile
     func onSmileDidChange(smiling: Bool) {}
     func onSmile() {
+        let vc = SettingsViewController.init(style: .plain)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
         presenter.facialJestureActionOccured(action: .smile)
     }
     

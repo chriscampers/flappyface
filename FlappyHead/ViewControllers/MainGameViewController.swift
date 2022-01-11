@@ -29,8 +29,6 @@ class MainGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: TEMP!!!!!
-        
         // setup game scene and store it so that it can be passed to the presenter
         let gameScene = loadOrReloadLevel()
         
@@ -53,6 +51,11 @@ class MainGameViewController: UIViewController {
         // Setup and startup facetrigger once the view has loaded
         faceTrigger = FaceTrigger(hostView: previewContainer, delegate: self)
         faceTrigger?.start()
+        
+        PermissionsManager.shared.promptForCameraPermissionsIfNeeded()
+        
+        let vc = SettingsViewController.init(style: .insetGrouped)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showRewardAd() {

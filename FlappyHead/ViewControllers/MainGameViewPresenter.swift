@@ -123,14 +123,7 @@ extension MainGameViewPresenter: GADFullScreenContentDelegate {
     }
 }
 
-extension MainGameViewPresenter: ModalPromptDelegate {
-    private func promptPermissions() {
-//        let permissions = [ISHPermissionCategory.photoCamera.rawValue as! NSNumber]
-        let vc = PermissionPromptViewController()
-        vc.permissionType = .camera
-        viewController.present(vc, animated: true, completion: { return })
-    }
-    
+extension MainGameViewPresenter: ModalPromptDelegate {    
     func reasonForDimissing(reason: ModalPromptViewController.ReasonForClosing) {
         removeOverlayAndPromptFromView()
         gamePlayManager.endGame()
@@ -140,8 +133,6 @@ extension MainGameViewPresenter: ModalPromptDelegate {
         }
         
         if reason == .cancel {
-            // TODO: Remove promptPermissions down the line
-            promptPermissions()
             viewController.stopRecording()
             gamePlayManager.endGame()
             instagramSharingManager.postToStories(image: captureScreen(),
