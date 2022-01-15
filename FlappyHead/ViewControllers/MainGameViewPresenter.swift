@@ -39,6 +39,11 @@ class MainGameViewPresenter: NSObject, MainGameViewPresenterProtocol {
         self.instagramSharingManager.delegate = self
 
         downloadFullScreenRewardAd()
+        
+        // Start recording to trigger screen recording prompt on init
+        if gameSettingsManager.canRecordScreen {
+            viewController.startRecording(completion: { viewController.stopRecording(reasonForStop: .thowAwayRecording) })
+        }
     }
     
     func facialJestureActionOccured(action: FaceTrackingAction) {
@@ -63,28 +68,22 @@ class MainGameViewPresenter: NSObject, MainGameViewPresenterProtocol {
     }
     
     private func userTriggeredBirdMovement() {
-        if gameSettingsManager.canRecordScreen {
-            viewController.startRecording()
-        }
-        
         gamePlayManager.moveGameCharacter()
     }
 }
 
 extension MainGameViewPresenter: GameManagerDelegate {
     func displayFullScreenAd() {
-//        showRewardAd()
+
     }
     
-    func displayExtraLifePromptIfNeeded() {
-        // TODO: this should not be a IfNeeded call, game manager should decide if prompt is displayed or not
-        // displayExtraLifePrompt should be the function name. And this logic should be moved
-        if Bool.random() {
-            viewController.addPromptView()
-            viewController.promptViewController.delegate = self
-        } else {
-            gamePlayManager.endGame()
-        }
+    func displayExtraLifePromp() {
+        viewController.addPromptView()
+        viewController.promptViewController.delegate = self
+    }
+    
+    func gameHasEnded() {
+        
     }
     
     func currentActionChanged(newActionName: String) {
@@ -127,18 +126,19 @@ extension MainGameViewPresenter: ModalPromptDelegate {
     func reasonForDimissing(reason: ModalPromptViewController.ReasonForClosing) {
         removeOverlayAndPromptFromView()
         gamePlayManager.endGame()
+
         
         if reason == .okayBtn {
             viewController.showRewardAd()
         }
         
         if reason == .cancel {
-            viewController.stopRecording()
+            viewController.stopRecording(reasonForStop: .saveRecording)
             gamePlayManager.endGame()
-            instagramSharingManager.postToStories(image: captureScreen(),
-                                                  backgroundTopColorHex: "",
-                                                  backgroundBottomColorHex: "",
-                                                  deepLink: "")
+//            instagramSharingManager.postToStories(image: captureScreen(),
+//                                                  backgroundTopColorHex: "",
+//                                                  backgroundBottomColorHex: "",
+//                                                  deepLink: "")
         }
     }
     

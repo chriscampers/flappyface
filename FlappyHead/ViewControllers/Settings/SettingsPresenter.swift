@@ -34,11 +34,13 @@ class SettingsPresenter {
         return [SettingsToggleCellDataModel(titleName: StringConstants.settings_canRecordTitle(),
                                             subtitleName: StringConstants.settings_canRecordBody(),
                                             settingsProperty: globalSettingsManager.canRecordScreen,
-                                            toggleClosure: { switchValue in self.globalSettingsManager.canRecordScreen = switchValue }),
+                                            toggleClosure: { switchValue in self.globalSettingsManager.canRecordScreen = switchValue
+                                            // Post a notification
+                                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: CanRecordNotificationName), object: switchValue)}),
                 SettingsToggleCellDataModel(titleName: StringConstants.settings_notificationEnabledTitle(),
                                             subtitleName: StringConstants.settings_notificationEnabledBody(),
                                             settingsProperty: globalSettingsManager.isNotificationEnabled,
-                                            toggleClosure: { switchValue in self.globalSettingsManager.isNotificationEnabled = switchValue })
+                                            toggleClosure: { switchValue in self.globalSettingsManager.isNotificationEnabled = switchValue})
         ]
     }
 }

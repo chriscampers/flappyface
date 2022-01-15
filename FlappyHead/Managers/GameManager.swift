@@ -17,10 +17,16 @@ protocol GamePlayManagerProtocol {
     var delegate: GameManagerDelegate? { get set }
     var gameScene: GameSceneProtocol? { get set }
     var gameState: GameState { get set }
+    
+    ///  endGame
+    ///
+    ///  can occure by natural gameplay like a crash, without a user getting prompted for an extra life
+    ///  or it can occure by a user action eg. canceling an opportunity for an extra life from the pause state etc.
     func endGame()
+    
     func restartGame()
     func resumeGame()
-    func pauseGame(causedByUserAction: Bool)
+    func pauseGame(causedByUserCrash: Bool)
     func currentFacialActionName() -> String
     func canShowPrompt() -> Bool
     func moveGameCharacter()
@@ -33,7 +39,8 @@ protocol GameManagerMechanicsProtocol {
 protocol GameManagerDelegate {
     func currentActionChanged(newActionName: String)
     func displayFullScreenAd()
-    func displayExtraLifePromptIfNeeded()
+    func displayExtraLifePromp()
+    func gameHasEnded()
 }
 
 enum FaceTrackingAction: String {
@@ -88,6 +95,7 @@ class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
     
     func endGame() {
         // todo: as
+        delegate?.gameHasEnded()
         gameScene?.registerEndOfGame()
         gameState.status = .over
         resetGameStateVars()
@@ -97,10 +105,14 @@ class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
         gameState.status = .inProgress 
     }
     
-    func pauseGame(causedByUserAction: Bool = true) {
+    func pauseGame(causedByUserCrash: Bool = true) {
         gameState.status = .pause
-        if causedByUserAction {
-            delegate?.displayExtraLifePromptIfNeeded()
+        if causedByUserCrash && canShowPrompt() {
+            delegate?.displayExtraLifePromp()
+        } else {
+            // Game must be over, since there is nothing else to do
+            endGame()
+            delegate?.gameHasEnded()
         }
 
     }

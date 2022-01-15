@@ -14,11 +14,6 @@ extension MainGameViewController: FaceTriggerDelegate {
     // MARK: Smile
     func onSmileDidChange(smiling: Bool) {}
     func onSmile() {
-        let vc = SettingsViewController.init(style: .plain)
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-
         presenter.facialJestureActionOccured(action: .smile)
     }
     
@@ -102,27 +97,57 @@ extension MainGameViewController: GADBannerViewDelegate {
 
 /// Extension to record screen video
 extension MainGameViewController: RPPreviewViewControllerDelegate {
-    @objc func startRecording() {
-            let recorder = RPScreenRecorder.shared()
-            recorder.startRecording{ (error) in
-                if let unwrappedError = error {
-                    print(unwrappedError.localizedDescription)
-                } else {
-                    // TODO: what todo here?
-                }
+    
+    @objc enum StopRecordingReason: Int {
+        case thowAwayRecording
+        case saveRecording
+    }
+    
+    @objc func startRecording(completion: (() -> Void)?) {
+        if !gameSettingsManager.canRecordScreen {
+            return
+        }
+        
+        let recorder = RPScreenRecorder.shared()
+        recorder.startRecording{ (error) in
+            if let unwrappedError = error {
+                // TODO: Move to presenter
+                self.gameSettingsManager.canRecordScreen = false
+                self.navigationItem.leftBarButtonItem?.tintColor = self.gameSettingsManager.canRecordScreen ? .white : .clear
+                self.popupAlert()
+                
+                print(unwrappedError.localizedDescription)
+            } else {
+                completion?()
             }
         }
+    }
+    
+    func popupAlert(){
+        
+        let alert = UIAlertController(title: "Notice",
+                                    message: "You will not be able to toggle recordings during this session. To re-enable video recording, restart the application and toggle the setting",
+                                    preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { action in
+            print("Great! Let's Play!")}))
+        
+        self.present(alert, animated: true)
+        
+    }
 
-        @objc func stopRecording() {
-            let recorder = RPScreenRecorder.shared()
-
-            recorder.stopRecording { [unowned self] (preview, error) in
-                if let unwrappedPreview = preview {
-                    unwrappedPreview.previewControllerDelegate = self
-                    self.present(unwrappedPreview, animated: true)
-                }
+    @objc func stopRecording(reasonForStop: StopRecordingReason) {
+        let recorder = RPScreenRecorder.shared()
+        recorder.stopRecording { [unowned self] (preview, error) in
+            if reasonForStop == .thowAwayRecording || !gameSettingsManager.canRecordScreen{
+                return
+            }
+            if let unwrappedPreview = preview {
+                unwrappedPreview.previewControllerDelegate = self
+                self.present(unwrappedPreview, animated: true)
             }
         }
+    }
 
         func previewControllerDidFinish(_ previewController: RPPreviewViewController) {
             dismiss(animated: true)

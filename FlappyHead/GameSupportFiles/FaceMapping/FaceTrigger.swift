@@ -60,7 +60,7 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
 
     // define ML accuracy thresholds
     private var smileThreshold: Float = 0.7
-    private var blinkThreshold: Float = 0.8
+    private var blinkThreshold: Float = 0.7
     private var browDownThreshold: Float = 0.25
     private var browUpThreshold: Float = 0.95
     private var cheekPuffThreshold: Float = 0.2

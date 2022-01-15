@@ -11,6 +11,8 @@ import SpriteKit
 import GoogleMobileAds
 import ISHPermissionKit
 
+let CanRecordNotificationName = "canRecordNotificationName"
+
 class MainGameViewController: UIViewController {
     @IBOutlet var previewContainer: UIView!
     @IBOutlet weak var actionLabel: UILabel!
@@ -23,12 +25,18 @@ class MainGameViewController: UIViewController {
     var gameManagerMechanics: GameManagerMechanicsProtocol = GameManager.shared
     var presenter: MainGameViewPresenterProtocol!
     var faceTrigger: FaceTrigger?
-
+    
     var bannerView: GADBannerView!
     var rewardedAd: GADRewardedAd?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // Register to receive notification in your class
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(cameraCanRecordNotification),
+                                               name: NSNotification.Name(rawValue: CanRecordNotificationName),
+                                               object: nil)
+
         // setup game scene and store it so that it can be passed to the presenter
         let gameScene = loadOrReloadLevel()
         
@@ -44,6 +52,22 @@ class MainGameViewController: UIViewController {
         
         // what the hell, setup the action label
         actionLabel.text = " " + gamePlayManager.currentFacialActionName() + " "
+
+        navigationItem.rightBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(navBarPressed))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "video"), style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem?.tintColor = .clear
+    }
+    
+    @objc private func cameraCanRecordNotification() {
+        // TODO: Move logic to presenter
+        navigationItem.leftBarButtonItem?.tintColor = gameSettingsManager.canRecordScreen ? .white : .clear
+        if gameSettingsManager.canRecordScreen {
+            startRecording(completion: nil)
+        } else {
+            stopRecording(reasonForStop: .thowAwayRecording)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -53,9 +77,6 @@ class MainGameViewController: UIViewController {
         faceTrigger?.start()
         
         PermissionsManager.shared.promptForCameraPermissionsIfNeeded()
-        
-        let vc = SettingsViewController.init(style: .insetGrouped)
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showRewardAd() {
@@ -125,6 +146,11 @@ class MainGameViewController: UIViewController {
                             constant: 0)
         ])
      }
+    
+    @objc private func navBarPressed() {
+        let vc = SettingsViewController.init(style: .insetGrouped)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc private func pause() {
         faceTrigger?.pause()

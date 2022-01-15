@@ -28,6 +28,13 @@ class SettingsToggleCell: UITableViewCell {
         self.detailTextLabel?.text = cellModel.subtitleName
         self.detailTextLabel?.isHidden = false
         self.detailTextLabel?.numberOfLines = 0
+        
+        if cellModel.titleName == StringConstants.settings_canRecordTitle() {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(cameraCanRecordNotification),
+                                                   name: NSNotification.Name(rawValue: CanRecordNotificationName),
+                                                   object: nil)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -38,5 +45,9 @@ class SettingsToggleCell: UITableViewCell {
     @objc func toggleChanged(mySwitch: UISwitch) {
         cellModel.toggleClosure(mySwitch.isOn)
         mySwitch.setOn(mySwitch.isOn, animated: true)
+    }
+ 
+    @objc private func cameraCanRecordNotification() {
+        toggle.isOn = GameSettingManager.shared.canRecordScreen
     }
 }

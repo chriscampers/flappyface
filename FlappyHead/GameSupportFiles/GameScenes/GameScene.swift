@@ -236,7 +236,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private func userCrashed() {
         moving.speed = 0
-        gamePlayManager.pauseGame(causedByUserAction: true)
+        gamePlayManager.pauseGame(causedByUserCrash: true)
     }
     
     private func createBackgroundFlash() {
