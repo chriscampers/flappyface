@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import FlappyHead
+@testable import FlappyFace
 
 class FlappyHeadTests: XCTestCase {
 

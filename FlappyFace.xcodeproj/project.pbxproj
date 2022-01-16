@@ -24,8 +24,9 @@
 		7A5FBE35279354FB00A87D3C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5FBE34279354FB00A87D3C /* FirebaseCrashlytics */; };
 		7A5FBE37279354FB00A87D3C /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5FBE36279354FB00A87D3C /* FirebaseRemoteConfig */; };
 		7A5FBE392793711700A87D3C /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE382793711700A87D3C /* RemoteConfigManager.swift */; };
-		7A5FBE3D2793752E00A87D3C /* RemoteConfigDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FBE3C2793752E00A87D3C /* RemoteConfigDefault.plist */; };
 		7A5FBE3F2793754000A87D3C /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FBE3E2793754000A87D3C /* RemoteConfigDefaults.plist */; };
+		7A5FBE4327947B4B00A87D3C /* GameManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE4227947B4B00A87D3C /* GameManagerTests.swift */; };
+		7A5FBE4627947B6A00A87D3C /* MockGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE4527947B6A00A87D3C /* MockGameManager.swift */; };
 		7AFA5F8B2781768500D16A51 /* ModalPromptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8A2781768500D16A51 /* ModalPromptViewController.xib */; };
 		7AFA5F8D2781769D00D16A51 /* ModalPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8C2781769C00D16A51 /* ModalPromptViewController.swift */; };
 		7AFA5F8F278248D500D16A51 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8E278248D500D16A51 /* UIView+Utils.swift */; };
@@ -89,23 +90,24 @@
 		7A5FBE2F278D2A7500A87D3C /* SettingsToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleCell.xib; sourceTree = "<group>"; };
 		7A5FBE31279352DC00A87D3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A5FBE382793711700A87D3C /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
-		7A5FBE3C2793752E00A87D3C /* RemoteConfigDefault.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = RemoteConfigDefault.plist; path = FlappyHead/RemoteConfigDefault.plist; sourceTree = SOURCE_ROOT; };
 		7A5FBE3E2793754000A87D3C /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		7A5FBE4227947B4B00A87D3C /* GameManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManagerTests.swift; sourceTree = "<group>"; };
+		7A5FBE4527947B6A00A87D3C /* MockGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameManager.swift; sourceTree = "<group>"; };
 		7AFA5F8A2781768500D16A51 /* ModalPromptViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalPromptViewController.xib; sourceTree = "<group>"; };
 		7AFA5F8C2781769C00D16A51 /* ModalPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPromptViewController.swift; sourceTree = "<group>"; };
 		7AFA5F8E278248D500D16A51 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		7ECE90EC97D10F7644FFF8A8 /* Pods_FlappyHead.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlappyHead.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9146A6C9B9E73C612788063 /* Pods-FlappyHead.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead.release.xcconfig"; path = "Target Support Files/Pods-FlappyHead/Pods-FlappyHead.release.xcconfig"; sourceTree = "<group>"; };
 		A94A1877C3E229DD07789CE6 /* Pods-FlappyHead.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlappyHead.debug.xcconfig"; path = "Target Support Files/Pods-FlappyHead/Pods-FlappyHead.debug.xcconfig"; sourceTree = "<group>"; };
-		AD5351A526D2DBAC002CB457 /* FlappyHead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyHead.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD5351A526D2DBAC002CB457 /* FlappyFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5351A826D2DBAC002CB457 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD5351AA26D2DBAC002CB457 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AD5351B426D2DBAD002CB457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD5351B626D2DBAD002CB457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD5351BB26D2DBAD002CB457 /* FlappyHeadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyHeadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD5351BB26D2DBAD002CB457 /* FlappyFaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyFaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5351BF26D2DBAD002CB457 /* FlappyHeadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyHeadTests.swift; sourceTree = "<group>"; };
 		AD5351C126D2DBAD002CB457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD5351C626D2DBAD002CB457 /* FlappyHeadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyHeadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD5351C626D2DBAD002CB457 /* FlappyFaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlappyFaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5351CA26D2DBAD002CB457 /* FlappyHeadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappyHeadUITests.swift; sourceTree = "<group>"; };
 		AD5351CC26D2DBAD002CB457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD5351D926D2DBDA002CB457 /* SKNode+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extension.swift"; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 			path = StringConstants;
 			sourceTree = "<group>";
 		};
+		7A5FBE4427947B5400A87D3C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7A5FBE4527947B6A00A87D3C /* MockGameManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		7AFA5F892781758C00D16A51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,9 +224,9 @@
 		AD5351A626D2DBAC002CB457 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD5351A526D2DBAC002CB457 /* FlappyHead.app */,
-				AD5351BB26D2DBAD002CB457 /* FlappyHeadTests.xctest */,
-				AD5351C626D2DBAD002CB457 /* FlappyHeadUITests.xctest */,
+				AD5351A526D2DBAC002CB457 /* FlappyFace.app */,
+				AD5351BB26D2DBAD002CB457 /* FlappyFaceTests.xctest */,
+				AD5351C626D2DBAD002CB457 /* FlappyFaceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +256,8 @@
 		AD5351BE26D2DBAD002CB457 /* FlappyHeadTests */ = {
 			isa = PBXGroup;
 			children = (
+				7A5FBE4427947B5400A87D3C /* Mocks */,
+				7A5FBE4227947B4B00A87D3C /* GameManagerTests.swift */,
 				AD5351BF26D2DBAD002CB457 /* FlappyHeadTests.swift */,
 				AD5351C126D2DBAD002CB457 /* Info.plist */,
 			);
@@ -331,7 +343,6 @@
 		AD53520C26D2DE5A002CB457 /* GameSupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				7A5FBE3C2793752E00A87D3C /* RemoteConfigDefault.plist */,
 				AD5351E626D2DBDB002CB457 /* Additional Assets */,
 				AD53520726D2DDCD002CB457 /* FaceMapping */,
 				AD5351E226D2DBDA002CB457 /* GameScenes */,
@@ -372,9 +383,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AD5351A426D2DBAC002CB457 /* FlappyHead */ = {
+		AD5351A426D2DBAC002CB457 /* FlappyFace */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD5351CF26D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHead" */;
+			buildConfigurationList = AD5351CF26D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyFace" */;
 			buildPhases = (
 				75DF38336ED468F89DF41D0C /* [CP] Check Pods Manifest.lock */,
 				AD5351A126D2DBAC002CB457 /* Sources */,
@@ -386,19 +397,19 @@
 			);
 			dependencies = (
 			);
-			name = FlappyHead;
+			name = FlappyFace;
 			packageProductDependencies = (
 				AD53520526D2DD3B002CB457 /* ScalingCarousel */,
 				7A5FBE34279354FB00A87D3C /* FirebaseCrashlytics */,
 				7A5FBE36279354FB00A87D3C /* FirebaseRemoteConfig */,
 			);
 			productName = FlappyHead;
-			productReference = AD5351A526D2DBAC002CB457 /* FlappyHead.app */;
+			productReference = AD5351A526D2DBAC002CB457 /* FlappyFace.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AD5351BA26D2DBAD002CB457 /* FlappyHeadTests */ = {
+		AD5351BA26D2DBAD002CB457 /* FlappyFaceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD5351D226D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHeadTests" */;
+			buildConfigurationList = AD5351D226D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyFaceTests" */;
 			buildPhases = (
 				48B2034260FCC73755BE5622 /* [CP] Check Pods Manifest.lock */,
 				AD5351B726D2DBAD002CB457 /* Sources */,
@@ -410,14 +421,14 @@
 			dependencies = (
 				AD5351BD26D2DBAD002CB457 /* PBXTargetDependency */,
 			);
-			name = FlappyHeadTests;
+			name = FlappyFaceTests;
 			productName = FlappyHeadTests;
-			productReference = AD5351BB26D2DBAD002CB457 /* FlappyHeadTests.xctest */;
+			productReference = AD5351BB26D2DBAD002CB457 /* FlappyFaceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AD5351C526D2DBAD002CB457 /* FlappyHeadUITests */ = {
+		AD5351C526D2DBAD002CB457 /* FlappyFaceUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AD5351D526D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHeadUITests" */;
+			buildConfigurationList = AD5351D526D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyFaceUITests" */;
 			buildPhases = (
 				8E2D22391EF4355D2BFD81FA /* [CP] Check Pods Manifest.lock */,
 				AD5351C226D2DBAD002CB457 /* Sources */,
@@ -430,9 +441,9 @@
 			dependencies = (
 				AD5351C826D2DBAD002CB457 /* PBXTargetDependency */,
 			);
-			name = FlappyHeadUITests;
+			name = FlappyFaceUITests;
 			productName = FlappyHeadUITests;
-			productReference = AD5351C626D2DBAD002CB457 /* FlappyHeadUITests.xctest */;
+			productReference = AD5351C626D2DBAD002CB457 /* FlappyFaceUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -449,6 +460,7 @@
 					};
 					AD5351BA26D2DBAD002CB457 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1320;
 						TestTargetID = AD5351A426D2DBAC002CB457;
 					};
 					AD5351C526D2DBAD002CB457 = {
@@ -457,7 +469,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AD5351A026D2DBAC002CB457 /* Build configuration list for PBXProject "FlappyHead" */;
+			buildConfigurationList = AD5351A026D2DBAC002CB457 /* Build configuration list for PBXProject "FlappyFace" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -475,9 +487,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AD5351A426D2DBAC002CB457 /* FlappyHead */,
-				AD5351BA26D2DBAD002CB457 /* FlappyHeadTests */,
-				AD5351C526D2DBAD002CB457 /* FlappyHeadUITests */,
+				AD5351A426D2DBAC002CB457 /* FlappyFace */,
+				AD5351BA26D2DBAD002CB457 /* FlappyFaceTests */,
+				AD5351C526D2DBAD002CB457 /* FlappyFaceUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -494,7 +506,6 @@
 				AD5351B526D2DBAD002CB457 /* LaunchScreen.storyboard in Resources */,
 				AD5351F326D2DBDB002CB457 /* GameScene.sks in Resources */,
 				7A5FBE32279352DC00A87D3C /* GoogleService-Info.plist in Resources */,
-				7A5FBE3D2793752E00A87D3C /* RemoteConfigDefault.plist in Resources */,
 				7A5FBE30278D2A7500A87D3C /* SettingsToggleCell.xib in Resources */,
 				7A5FBE222787E70200A87D3C /* Localizable.strings in Resources */,
 				7AFA5F8B2781768500D16A51 /* ModalPromptViewController.xib in Resources */,
@@ -656,7 +667,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A5FBE4627947B6A00A87D3C /* MockGameManager.swift in Sources */,
 				AD5351C026D2DBAD002CB457 /* FlappyHeadTests.swift in Sources */,
+				7A5FBE4327947B4B00A87D3C /* GameManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,12 +686,12 @@
 /* Begin PBXTargetDependency section */
 		AD5351BD26D2DBAD002CB457 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AD5351A426D2DBAC002CB457 /* FlappyHead */;
+			target = AD5351A426D2DBAC002CB457 /* FlappyFace */;
 			targetProxy = AD5351BC26D2DBAD002CB457 /* PBXContainerItemProxy */;
 		};
 		AD5351C826D2DBAD002CB457 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AD5351A426D2DBAC002CB457 /* FlappyHead */;
+			target = AD5351A426D2DBAC002CB457 /* FlappyFace */;
 			targetProxy = AD5351C726D2DBAD002CB457 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -887,8 +900,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3QF4959CZ;
+				DEVELOPMENT_TEAM = 792UA3WQAJ;
 				INFOPLIST_FILE = FlappyHeadTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -898,9 +912,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ChrisCampanelli.FlappyHeadTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyHead.app/FlappyHead";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyFace.app/FlappyFace";
 			};
 			name = Debug;
 		};
@@ -910,8 +925,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3QF4959CZ;
+				DEVELOPMENT_TEAM = 792UA3WQAJ;
 				INFOPLIST_FILE = FlappyHeadTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -923,7 +939,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyHead.app/FlappyHead";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlappyFace.app/FlappyFace";
 			};
 			name = Release;
 		};
@@ -933,7 +949,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3QF4959CZ;
+				DEVELOPMENT_TEAM = 792UA3WQAJ;
 				INFOPLIST_FILE = FlappyHeadUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -954,7 +970,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C3QF4959CZ;
+				DEVELOPMENT_TEAM = 792UA3WQAJ;
 				INFOPLIST_FILE = FlappyHeadUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -972,7 +988,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AD5351A026D2DBAC002CB457 /* Build configuration list for PBXProject "FlappyHead" */ = {
+		AD5351A026D2DBAC002CB457 /* Build configuration list for PBXProject "FlappyFace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD5351CD26D2DBAD002CB457 /* Debug */,
@@ -981,7 +997,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD5351CF26D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHead" */ = {
+		AD5351CF26D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyFace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD5351D026D2DBAD002CB457 /* Debug */,
@@ -990,7 +1006,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD5351D226D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHeadTests" */ = {
+		AD5351D226D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyFaceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD5351D326D2DBAD002CB457 /* Debug */,
@@ -999,7 +1015,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AD5351D526D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyHeadUITests" */ = {
+		AD5351D526D2DBAD002CB457 /* Build configuration list for PBXNativeTarget "FlappyFaceUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AD5351D626D2DBAD002CB457 /* Debug */,

@@ -112,7 +112,6 @@ class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
         } else {
             // Game must be over, since there is nothing else to do
             endGame()
-            delegate?.gameHasEnded()
         }
 
     }
@@ -121,7 +120,7 @@ class GameManager: GamePlayManagerProtocol, GameManagerMechanicsProtocol {
         gameState.status = .inProgress
     }
     
-    func canShowPrompt() -> Bool{
+    func canShowPrompt() -> Bool {
         return Bool.random()
     }
     
