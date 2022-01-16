@@ -73,7 +73,7 @@ class MainGameViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Setup and startup facetrigger once the view has loaded
-        faceTrigger = FaceTrigger(hostView: previewContainer, delegate: self)
+        faceTrigger = FaceTrigger(hostView: previewContainer, remoteConfigManager: RemoteConfigManager.shared, delegate: self)
         faceTrigger?.start()
         
         PermissionsManager.shared.promptForCameraPermissionsIfNeeded()

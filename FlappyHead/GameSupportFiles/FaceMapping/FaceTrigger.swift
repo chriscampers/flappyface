@@ -49,7 +49,7 @@ import ARKit
 }
 
 public class FaceTrigger: NSObject, ARSCNViewDelegate {
-    
+    private let remoteConfigManager: RemoteConfigManagerType
     private var hidePreview: Bool = false
     private var sceneView: ARSCNView?
     private let hostView: UIView
@@ -59,19 +59,59 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
                                                                  .removeExistingAnchors]
 
     // define ML accuracy thresholds
-    private var smileThreshold: Float = 0.7
-    private var blinkThreshold: Float = 0.7
-    private var browDownThreshold: Float = 0.25
-    private var browUpThreshold: Float = 0.95
-    private var cheekPuffThreshold: Float = 0.2
-    private var mouthPuckerThreshold: Float = 0.7
-    private var jawOpenThreshold: Float = 0.9
-    private var jawLeftThreshold: Float = 0.3
-    private var jawRightThreshold: Float = 0.3
-    private var squintThreshold: Float = 0.8
+    private var smileThreshold: Float {
+        get {
+            return remoteConfigManager.smileThreshold()?.floatValue ?? 0.7
+        }
+    }
+    private var blinkThreshold: Float {
+        get {
+            return remoteConfigManager.blinkThreshold()?.floatValue ?? 0.7
+        }
+    }
+    private var browDownThreshold: Float  {
+        get {
+            return remoteConfigManager.blinkThreshold()?.floatValue ?? 0.25
+        }
+    }
+    private var browUpThreshold: Float {
+        get {
+            return remoteConfigManager.browUpThreshold()?.floatValue ?? 0.95
+        }
+    }
+    private var cheekPuffThreshold: Float {
+        get {
+            return remoteConfigManager.cheekPuffThreshold()?.floatValue ?? 0.2
+        }
+    }
+    private var mouthPuckerThreshold: Float {
+        get {
+            return remoteConfigManager.mouthPuckerThreshold()?.floatValue ?? 0.7
+        }
+    }
+    private var jawOpenThreshold: Float {
+        get {
+            return remoteConfigManager.jawOpenThreshold()?.floatValue ?? 0.9
+        }
+    }
+    private var jawLeftThreshold: Float {
+        get {
+            return remoteConfigManager.jawLeftThreshold()?.floatValue ?? 0.3
+        }
+    }
+    private var jawRightThreshold: Float {
+        get {
+            return remoteConfigManager.jawRightThreshold()?.floatValue ?? 0.3
+        }
+    }
+    private var squintThreshold: Float {
+        get {
+            return remoteConfigManager.squintThreshold()?.floatValue ?? 0.8
+        }
+    }
     
-    public init(hostView: UIView, delegate: FaceTriggerDelegate) {
-        
+    init(hostView: UIView, remoteConfigManager: RemoteConfigManagerType, delegate: FaceTriggerDelegate) {
+        self.remoteConfigManager = remoteConfigManager
         self.hostView = hostView
         self.delegate = delegate
     }

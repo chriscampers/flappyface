@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import ISHPermissionKit
-import L10n_swift
 
 class PermissionPromptViewController: UIViewController {
     enum PermissionType: String {

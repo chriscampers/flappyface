@@ -7,14 +7,21 @@
 
 import UIKit
 import GoogleMobileAds
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Get Firebase going
+        FirebaseApp.configure()
+        
+        // Init google ads
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["8df6067e5244dc10807aaffd34530739" ];
+        
+        _ = RemoteConfigManager()
         return true
     }
 

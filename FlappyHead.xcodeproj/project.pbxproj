@@ -20,6 +20,12 @@
 		7A5FBE2B278D1CD900A87D3C /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE2A278D1CD900A87D3C /* SettingsPresenter.swift */; };
 		7A5FBE2E278D2A4800A87D3C /* SettingsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE2D278D2A4800A87D3C /* SettingsToggleCell.swift */; };
 		7A5FBE30278D2A7500A87D3C /* SettingsToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FBE2F278D2A7500A87D3C /* SettingsToggleCell.xib */; };
+		7A5FBE32279352DC00A87D3C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FBE31279352DC00A87D3C /* GoogleService-Info.plist */; };
+		7A5FBE35279354FB00A87D3C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5FBE34279354FB00A87D3C /* FirebaseCrashlytics */; };
+		7A5FBE37279354FB00A87D3C /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5FBE36279354FB00A87D3C /* FirebaseRemoteConfig */; };
+		7A5FBE392793711700A87D3C /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FBE382793711700A87D3C /* RemoteConfigManager.swift */; };
+		7A5FBE3D2793752E00A87D3C /* RemoteConfigDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FBE3C2793752E00A87D3C /* RemoteConfigDefault.plist */; };
+		7A5FBE3F2793754000A87D3C /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A5FBE3E2793754000A87D3C /* RemoteConfigDefaults.plist */; };
 		7AFA5F8B2781768500D16A51 /* ModalPromptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8A2781768500D16A51 /* ModalPromptViewController.xib */; };
 		7AFA5F8D2781769D00D16A51 /* ModalPromptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8C2781769C00D16A51 /* ModalPromptViewController.swift */; };
 		7AFA5F8F278248D500D16A51 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFA5F8E278248D500D16A51 /* UIView+Utils.swift */; };
@@ -81,6 +87,10 @@
 		7A5FBE2A278D1CD900A87D3C /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		7A5FBE2D278D2A4800A87D3C /* SettingsToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsToggleCell.swift; sourceTree = "<group>"; };
 		7A5FBE2F278D2A7500A87D3C /* SettingsToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsToggleCell.xib; sourceTree = "<group>"; };
+		7A5FBE31279352DC00A87D3C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7A5FBE382793711700A87D3C /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
+		7A5FBE3C2793752E00A87D3C /* RemoteConfigDefault.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = RemoteConfigDefault.plist; path = FlappyHead/RemoteConfigDefault.plist; sourceTree = SOURCE_ROOT; };
+		7A5FBE3E2793754000A87D3C /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		7AFA5F8A2781768500D16A51 /* ModalPromptViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalPromptViewController.xib; sourceTree = "<group>"; };
 		7AFA5F8C2781769C00D16A51 /* ModalPromptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPromptViewController.swift; sourceTree = "<group>"; };
 		7AFA5F8E278248D500D16A51 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
@@ -123,8 +133,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A5FBE35279354FB00A87D3C /* FirebaseCrashlytics in Frameworks */,
 				AD53520626D2DD3B002CB457 /* ScalingCarousel in Frameworks */,
 				A10803631A65657FCDCAB532 /* Pods_FlappyHead.framework in Frameworks */,
+				7A5FBE37279354FB00A87D3C /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +233,8 @@
 				AD5351D826D2DBDA002CB457 /* Extensions */,
 				ADA95FED26D47BA5000AF0CD /* Utils */,
 				AD53520C26D2DE5A002CB457 /* GameSupportFiles */,
+				7A5FBE31279352DC00A87D3C /* GoogleService-Info.plist */,
+				7A5FBE3E2793754000A87D3C /* RemoteConfigDefaults.plist */,
 				AD5351B626D2DBAD002CB457 /* Info.plist */,
 				ADDE17B72766EDF500E146A3 /* Content */,
 				AD5351B326D2DBAD002CB457 /* LaunchScreen.storyboard */,
@@ -270,6 +284,7 @@
 				AD5351E126D2DBDA002CB457 /* GameSettingManager.swift */,
 				ADA95FEA26D4730C000AF0CD /* GameManager.swift */,
 				7A5FBE192787D6EE00A87D3C /* PermissionsManager.swift */,
+				7A5FBE382793711700A87D3C /* RemoteConfigManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -316,6 +331,7 @@
 		AD53520C26D2DE5A002CB457 /* GameSupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				7A5FBE3C2793752E00A87D3C /* RemoteConfigDefault.plist */,
 				AD5351E626D2DBDB002CB457 /* Additional Assets */,
 				AD53520726D2DDCD002CB457 /* FaceMapping */,
 				AD5351E226D2DBDA002CB457 /* GameScenes */,
@@ -373,6 +389,8 @@
 			name = FlappyHead;
 			packageProductDependencies = (
 				AD53520526D2DD3B002CB457 /* ScalingCarousel */,
+				7A5FBE34279354FB00A87D3C /* FirebaseCrashlytics */,
+				7A5FBE36279354FB00A87D3C /* FirebaseRemoteConfig */,
 			);
 			productName = FlappyHead;
 			productReference = AD5351A526D2DBAC002CB457 /* FlappyHead.app */;
@@ -451,6 +469,7 @@
 			mainGroup = AD53519C26D2DBAC002CB457;
 			packageReferences = (
 				AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel" */,
+				7A5FBE33279354FB00A87D3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = AD5351A626D2DBAC002CB457 /* Products */;
 			projectDirPath = "";
@@ -470,9 +489,12 @@
 			files = (
 				AD5351F126D2DBDB002CB457 /* Main.storyboard in Resources */,
 				7A5FBE0F2783F4D200A87D3C /* PermissionPromptViewController.xib in Resources */,
+				7A5FBE3F2793754000A87D3C /* RemoteConfigDefaults.plist in Resources */,
 				ADDE17E02766EDF500E146A3 /* spark.png in Resources */,
 				AD5351B526D2DBAD002CB457 /* LaunchScreen.storyboard in Resources */,
 				AD5351F326D2DBDB002CB457 /* GameScene.sks in Resources */,
+				7A5FBE32279352DC00A87D3C /* GoogleService-Info.plist in Resources */,
+				7A5FBE3D2793752E00A87D3C /* RemoteConfigDefault.plist in Resources */,
 				7A5FBE30278D2A7500A87D3C /* SettingsToggleCell.xib in Resources */,
 				7A5FBE222787E70200A87D3C /* Localizable.strings in Resources */,
 				7AFA5F8B2781768500D16A51 /* ModalPromptViewController.xib in Resources */,
@@ -614,6 +636,7 @@
 				AD53521326D2E3CF002CB457 /* FaceTriggerEvaluators.swift in Sources */,
 				AD5351F826D2DBDB002CB457 /* MainGameViewController.swift in Sources */,
 				7A5FBE112783F50800A87D3C /* PermissionPromptViewController.swift in Sources */,
+				7A5FBE392793711700A87D3C /* RemoteConfigManager.swift in Sources */,
 				7A5FBE2B278D1CD900A87D3C /* SettingsPresenter.swift in Sources */,
 				7A5FBE0D2783C83900A87D3C /* InstagramSharingManager.swift in Sources */,
 				AD5351F226D2DBDB002CB457 /* GameSettingManager.swift in Sources */,
@@ -827,7 +850,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ChrisCampanelli.FlappyHead;
+				PRODUCT_BUNDLE_IDENTIFIER = ChrisCampanelli.FlappyFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -851,7 +874,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ChrisCampanelli.FlappyHead;
+				PRODUCT_BUNDLE_IDENTIFIER = ChrisCampanelli.FlappyFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -988,6 +1011,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7A5FBE33279354FB00A87D3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/superpeteblaze/ScalingCarousel.git";
@@ -999,6 +1030,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7A5FBE34279354FB00A87D3C /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A5FBE33279354FB00A87D3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		7A5FBE36279354FB00A87D3C /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A5FBE33279354FB00A87D3C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		AD53520526D2DD3B002CB457 /* ScalingCarousel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AD53520426D2DD3B002CB457 /* XCRemoteSwiftPackageReference "ScalingCarousel" */;
